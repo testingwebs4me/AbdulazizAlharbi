@@ -2,13 +2,13 @@ import Lenis from 'lenis';
 
 export const initSmoothScroll = () => {
   const lenis = new Lenis({
-    duration: 1.5,
-    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+    lerp: 0.08,
+    duration: 1.2,
+    easing: (t) => 1 - Math.pow(1 - t, 3),
     orientation: 'vertical',
     smoothWheel: true,
-    wheelMultiplier: 1,
-    touchMultiplier: 2,
-    infinite: false,
+    wheelMultiplier: 0.7,
+    touchMultiplier: 1.5,
   });
 
   function raf(time: number) {
@@ -17,6 +17,20 @@ export const initSmoothScroll = () => {
   }
 
   requestAnimationFrame(raf);
+
+  // Handle anchor clicks
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', (e) => {
+      e.preventDefault();
+      const target = document.querySelector((anchor as HTMLAnchorElement).getAttribute('href')!);
+      if (target) {
+        lenis.scrollTo(target as HTMLElement, {
+          offset: 0,
+          duration: 1.5,
+        });
+      }
+    });
+  });
 
   return lenis;
 };
