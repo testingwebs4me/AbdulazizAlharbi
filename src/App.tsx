@@ -1,7 +1,6 @@
 import { useEffect } from 'react';
 import { ScrollProgress } from './components/ScrollProgress';
 import { MagneticCursor } from './components/MagneticCursor';
-import { AnimatedBackground } from './components/AnimatedBackground';
 import { Hero } from './sections/Hero';
 import { About } from './sections/About';
 import { Skills } from './sections/Skills';
@@ -20,19 +19,16 @@ function App() {
   }, []);
 
   return (
-    <div className="relative" style={{ backgroundColor: 'transparent' }}>
-      <AnimatedBackground />
-      <div className="relative" style={{ zIndex: 1 }}>
-        <MagneticCursor />
-        <ScrollProgress />
-        <Hero />
-        <About />
-        <Skills />
-        <Projects />
-        <Education />
-        <FutureGrowth />
-        <Contact />
-      </div>
+    <div className="relative">
+      <MagneticCursor />
+      <ScrollProgress />
+      <Hero />
+      <About />
+      <Skills />
+      <Projects />
+      <Education />
+      <FutureGrowth />
+      <Contact />
     </div>
   );
 }
