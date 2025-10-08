@@ -10,39 +10,39 @@ export const Skills = () => {
 
   const skillCategories = [
     {
-      title: 'Networking & Infrastructure',
+      title: 'Networking',
       icon: '🌐',
-      skills: ['Network Setup & Configuration', 'Network Security', 'System Architecture'],
+      skills: ['Setting up networks', 'Security configs', 'System design'],
       gradient: 'from-blue-500 to-cyan-500'
     },
     {
-      title: 'System Administration',
+      title: 'Systems',
       icon: '⚙️',
-      skills: ['Linux Administration', 'Virtualization (VMware, VirtualBox)', 'Server Management'],
+      skills: ['Linux stuff', 'VMs (VMware, VirtualBox)', 'Server management'],
       gradient: 'from-purple-500 to-pink-500'
     },
     {
-      title: 'Operations & Support',
+      title: 'Problem Solving',
       icon: '🛠️',
-      skills: ['Technical Troubleshooting', 'System Monitoring', 'User Support'],
+      skills: ['Fixing things', 'Troubleshooting', 'Support'],
       gradient: 'from-orange-500 to-red-500'
     },
     {
-      title: 'Product Execution',
+      title: 'Shipping Products',
       icon: '🚀',
-      skills: ['Feature Planning', 'Deployment Strategy', 'App Store Release (iOS & Android)'],
+      skills: ['Planning features', 'Getting stuff deployed', 'App store releases'],
       gradient: 'from-green-500 to-emerald-500'
     },
     {
-      title: 'Web App Delivery',
+      title: 'Web Development',
       icon: '💻',
-      skills: ['Full-Stack Development', 'QR Ordering Systems', 'Internal Tools Development'],
+      skills: ['Full-stack apps', 'Real-time systems', 'Internal tools'],
       gradient: 'from-indigo-500 to-blue-500'
     },
     {
-      title: 'Continuous Growth',
+      title: 'Learning',
       icon: '📚',
-      skills: ['CCNA Preparation', 'AWS Technical Essentials', 'Cloud Technologies'],
+      skills: ['CCNA prep', 'AWS', 'Cloud tech'],
       gradient: 'from-yellow-500 to-orange-500'
     },
   ];
@@ -64,10 +64,10 @@ export const Skills = () => {
             What I Do
           </span>
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold mt-4 mb-6">
-            Skills & Expertise
+            Skills
           </h2>
           <p className="text-lg text-dark-300 max-w-2xl mx-auto">
-            A comprehensive toolkit for delivering end-to-end technical solutions
+            What I know and what I'm working on
           </p>
         </motion.div>
 

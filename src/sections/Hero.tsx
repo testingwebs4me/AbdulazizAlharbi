@@ -49,12 +49,11 @@ export const Hero = () => {
           </p>
         </motion.div>
 
-        <motion.p 
+        <motion.p
           variants={fadeInUp}
           className="mt-8 text-lg md:text-xl text-dark-300 max-w-2xl mx-auto leading-relaxed"
         >
-          Building and launching products that solve practical problems, 
-          bridging the gap between technical execution and business needs
+          I build things that actually work and get shipped — from web apps to network solutions
         </motion.p>
 
         <motion.div
@@ -65,7 +64,7 @@ export const Hero = () => {
             href="#about"
             className="inline-block px-8 py-4 bg-primary-500 hover:bg-primary-600 text-white rounded-full font-medium text-lg transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-primary-500/50"
           >
-            Explore My Work
+            See What I've Built
           </a>
         </motion.div>
 

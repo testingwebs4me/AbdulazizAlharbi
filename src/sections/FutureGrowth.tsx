@@ -35,15 +35,14 @@ export const FutureGrowth = () => {
             What's Next
           </span>
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold mt-4 mb-8">
-            Continuous <span className="text-gradient">Evolution</span>
+            What's <span className="text-gradient">Next</span>
           </h2>
-          
-          <motion.p 
+
+          <motion.p
             variants={fadeInUp}
             className="text-xl md:text-2xl text-dark-200 leading-relaxed max-w-3xl mx-auto mb-12"
           >
-            Currently expanding into <span className="text-primary-400 font-semibold">AI and automation</span>, 
-            focusing on integrating intelligent systems into real-world products and internal tools.
+            Getting into AI and automation now. Everyone's talking about it, might as well learn how to actually use it.
           </motion.p>
 
           <motion.div 
@@ -69,10 +68,8 @@ export const FutureGrowth = () => {
             className="bg-gradient-to-r from-dark-700 to-dark-800 rounded-2xl p-8 border border-primary-500/30"
           >
             <p className="text-dark-200 text-lg leading-relaxed">
-              "The intersection of <span className="text-white font-semibold">networking infrastructure</span>, 
-              <span className="text-white font-semibold"> product development</span>, and 
-              <span className="text-white font-semibold"> emerging AI technologies</span> represents 
-              the future of intelligent, scalable systems. I'm committed to mastering this convergence."
+              Looking to combine networking knowledge with product building skills and throw AI into the mix.
+              Not sure where it'll go, but that's kind of the point.
             </p>
           </motion.div>
         </motion.div>

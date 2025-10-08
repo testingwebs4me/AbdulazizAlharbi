@@ -10,31 +10,31 @@ export const Projects = () => {
 
   const projects = [
     {
-      title: 'QR Ordering Web App',
-      role: 'End-to-End Product Development Lead',
-      description: 'Led complete product lifecycle from requirements gathering to production deployment.',
+      title: 'QR Ordering System',
+      role: 'Built from scratch',
+      description: 'Someone needed a way for people to order drinks in meeting rooms without calling or texting. So I built a web app for it.',
       features: [
-        'QR code generation system for meeting rooms',
-        'Real-time ordering dashboard for staff',
-        'Seamless user experience for drink ordering',
-        'Live request tracking and management'
+        'Scan QR code, pick your drink, done',
+        'Dashboard for staff to see all orders in real-time',
+        'Simple, fast, works on any phone',
+        'Actually gets used daily now'
       ],
-      impact: 'Deployed and actively used, significantly improving service response time and operational efficiency',
-      tech: ['Web Development', 'Real-time Systems', 'QR Technology', 'Product Management'],
+      impact: 'People actually use it. No more missed orders or confusion. Just works.',
+      tech: ['Web Dev', 'Real-time Updates', 'QR Codes'],
       gradient: 'from-blue-500 to-cyan-500'
     },
     {
-      title: 'App Launch & Deployment Coordination',
-      role: 'Technical & Organizational Problem Solver',
-      description: 'Overcame critical blockers preventing mobile app store release across both major platforms.',
+      title: 'App Store Launch',
+      role: 'Fixed what was broken',
+      description: 'App was ready but stuck in approval hell for months. Apple wanted DUNS numbers, Google wanted other stuff. I figured it all out.',
       features: [
-        'Resolved DUNS verification complexities',
-        'Managed Apple organization requirements',
-        'Coordinated Google Play deployment',
-        'Navigated regulatory and technical constraints'
+        'Sorted out the DUNS verification mess',
+        'Got Apple Developer account stuff working',
+        'Handled Google Play requirements',
+        'Dealt with all the red tape'
       ],
-      impact: 'Successfully enabled product launch on both iOS and Android platforms, removing months of deployment delays',
-      tech: ['iOS Deployment', 'Android Deployment', 'Project Coordination', 'Compliance Management'],
+      impact: 'App went live on both stores. Months of delays cleared in a few weeks.',
+      tech: ['iOS', 'Android', 'Problem Solving'],
       gradient: 'from-purple-500 to-pink-500'
     }
   ];
@@ -55,13 +55,13 @@ export const Projects = () => {
       >
         <motion.div variants={fadeInUp} className="text-center mb-20">
           <span className="text-primary-400 font-medium text-sm tracking-widest uppercase">
-            Portfolio Highlights
+            Things I've Built
           </span>
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold mt-4 mb-6">
-            Featured Projects
+            Projects
           </h2>
           <p className="text-lg text-dark-300 max-w-2xl mx-auto">
-            Real-world solutions that bridge technical execution and business impact
+            Stuff I've actually shipped and people actually use
           </p>
         </motion.div>
 

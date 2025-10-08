@@ -30,29 +30,27 @@ export const About = () => {
       >
         <motion.div variants={fadeInUp} className="text-center mb-16">
           <span className="text-primary-400 font-medium text-sm tracking-widest uppercase">
-            Who I Am
+            About
           </span>
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold mt-4 mb-6">
-            About Me
+            Who I Am
           </h2>
         </motion.div>
 
         <div className="grid md:grid-cols-2 gap-12 lg:gap-20 items-center">
           <motion.div variants={fadeInUp} className="space-y-6">
             <p className="text-lg md:text-xl text-dark-200 leading-relaxed">
-              I'm an <span className="text-primary-400 font-semibold">IT Specialist</span> with 
-              a background in computer networks and hands-on experience delivering real-world 
-              tech solutions.
+              I'm studying Computer Networks but honestly, I spend most of my time actually
+              building stuff. Not just learning theory — I mean shipping real products that people use.
             </p>
             <p className="text-lg md:text-xl text-dark-300 leading-relaxed">
-              I focus on <span className="text-white font-medium">building and launching products</span> that 
-              solve practical problems — from internal platforms to client-facing web apps — 
-              and <span className="text-white font-medium">bridging the gap</span> between 
-              technical execution and business needs.
+              Whether it's a QR ordering system for offices or figuring out how to get apps
+              through the App Store approval process, I just like solving problems and
+              making things work.
             </p>
             <p className="text-lg text-dark-400 leading-relaxed">
-              Currently pursuing my diploma with honors while continuously expanding my expertise 
-              in networking, cloud technologies, and emerging AI systems.
+              Right now I'm keeping a 4.58 GPA while prepping for CCNA and diving into cloud tech.
+              Also getting into AI stuff because, well, it's everywhere now.
             </p>
           </motion.div>
 

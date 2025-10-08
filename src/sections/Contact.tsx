@@ -53,7 +53,7 @@ export const Contact = () => {
             Let's Connect
           </h2>
           <p className="text-lg text-dark-300 max-w-2xl mx-auto">
-            Interested in collaborating or discussing opportunities? Feel free to reach out.
+            Want to chat about a project or opportunity? Hit me up.
           </p>
         </motion.div>
 
@@ -85,7 +85,7 @@ export const Contact = () => {
           className="text-center pt-12 border-t border-dark-800"
         >
           <p className="text-dark-400 mb-4">
-            Open to exciting opportunities in IT, product development, and network engineering
+            Open to interesting work in IT, dev, or networking
           </p>
           <div className="flex justify-center space-x-6">
             <a 
@@ -102,7 +102,7 @@ export const Contact = () => {
           className="text-center mt-16 pt-8 border-t border-dark-800"
         >
           <p className="text-dark-500 text-sm">
-            © 2025 Abdulaziz Alharbi. Building the future, one project at a time.
+            © 2025 Abdulaziz Alharbi
           </p>
         </motion.div>
       </motion.div>
