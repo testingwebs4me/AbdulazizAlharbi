@@ -39,7 +39,7 @@ export const Hero = () => {
     <section
       id="home"
       ref={sectionRef}
-      className="snap-section min-h-screen flex items-center justify-center relative overflow-hidden"
+      className="snap-section min-h-[85vh] flex items-center justify-center relative overflow-hidden"
       onMouseMove={handleMouseMove}
     >
       <div className="absolute inset-0 bg-gradient-to-br from-dark-900 via-dark-800 to-dark-900" />
