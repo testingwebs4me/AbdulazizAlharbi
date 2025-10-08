@@ -130,12 +130,6 @@ export const Hero = () => {
           transition={{ duration: 0.8, delay: 1 }}
           className="space-y-4 mb-8"
         >
-          <motion.p
-            className="text-3xl md:text-4xl lg:text-5xl font-display font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-dark-200"
-            whileHover={{ scale: 1.05 }}
-          >
-            IT Specialist
-          </motion.p>
           <motion.div
             className="flex items-center justify-center gap-4 text-xl md:text-2xl text-primary-400"
             initial={{ opacity: 0 }}
@@ -152,6 +146,12 @@ export const Hero = () => {
             </motion.span>
             <span className="font-medium">Network Engineer</span>
           </motion.div>
+          <motion.p
+            className="text-3xl md:text-4xl lg:text-5xl font-display font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-dark-200"
+            whileHover={{ scale: 1.05 }}
+          >
+            IT Specialist
+          </motion.p>
         </motion.div>
 
         <motion.p
@@ -161,7 +161,7 @@ export const Hero = () => {
           className="mt-8 text-xl md:text-2xl text-dark-200 max-w-3xl mx-auto leading-relaxed font-light"
         >
           I build things that actually work and get shipped —{' '}
-          <span className="text-primary-400 font-medium">from web apps to network solutions</span>
+          <span className="text-primary-400 font-medium">from networking to webapps</span>
         </motion.p>
 
         <motion.div
