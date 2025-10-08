@@ -41,8 +41,6 @@ export const Hero = () => {
       className="snap-section min-h-screen flex items-center justify-center relative overflow-hidden"
       onMouseMove={handleMouseMove}
     >
-      <div className="absolute inset-0 bg-gradient-to-br from-dark-900 via-dark-800 to-dark-900" />
-
       <motion.div
         style={{ y, opacity }}
         className="relative z-10 text-center px-6 max-w-6xl mx-auto"
