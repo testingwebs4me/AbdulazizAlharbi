@@ -205,7 +205,7 @@ export const Projects = () => {
                                   transition={{ duration: 0.3 }}
                                 >
                                   <img
-                                    src="https://images.pexels.com/photos/6347888/pexels-photo-6347888.jpeg?auto=compress&cs=tinysrgb&w=400"
+                                    src="https://raw.githubusercontent.com/testingwebs4me/AbdulazizAlharbi/main/Screenshot%201447-04-16%20at%2022.07.03.png"
                                     alt="QR Ordering System - Maaden"
                                     className="w-full h-full object-cover opacity-80"
                                   />
@@ -220,7 +220,7 @@ export const Projects = () => {
                                   transition={{ duration: 0.3 }}
                                 >
                                   <img
-                                    src="https://images.pexels.com/photos/4348401/pexels-photo-4348401.jpeg?auto=compress&cs=tinysrgb&w=400"
+                                    src="https://raw.githubusercontent.com/testingwebs4me/AbdulazizAlharbi/main/blur.png"
                                     alt="QR Ordering System - Remat"
                                     className="w-full h-full object-cover opacity-80"
                                   />
