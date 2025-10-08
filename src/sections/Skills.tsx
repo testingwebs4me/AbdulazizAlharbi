@@ -11,37 +11,62 @@ export const Skills = () => {
   const skillCategories = [
     {
       title: 'Networking',
-      icon: '🌐',
+      icon: (
+        <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+        </svg>
+      ),
       skills: ['Setting up networks', 'Security configs', 'System design'],
       gradient: 'from-blue-500 to-cyan-500'
     },
     {
       title: 'Systems',
-      icon: '⚙️',
+      icon: (
+        <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+        </svg>
+      ),
       skills: ['Linux stuff', 'VMs (VMware, VirtualBox)', 'Server management'],
       gradient: 'from-purple-500 to-pink-500'
     },
     {
       title: 'Problem Solving',
-      icon: '🛠️',
+      icon: (
+        <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
+        </svg>
+      ),
       skills: ['Fixing things', 'Troubleshooting', 'Support'],
       gradient: 'from-orange-500 to-red-500'
     },
     {
       title: 'Shipping Products',
-      icon: '🚀',
+      icon: (
+        <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 10V3L4 14h7v7l9-11h-7z" />
+        </svg>
+      ),
       skills: ['Planning features', 'Getting stuff deployed', 'App store releases'],
       gradient: 'from-green-500 to-emerald-500'
     },
     {
       title: 'Web Development',
-      icon: '💻',
+      icon: (
+        <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+        </svg>
+      ),
       skills: ['Full-stack apps', 'Real-time systems', 'Internal tools'],
       gradient: 'from-indigo-500 to-blue-500'
     },
     {
       title: 'Learning',
-      icon: '📚',
+      icon: (
+        <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+        </svg>
+      ),
       skills: ['CCNA prep', 'AWS', 'Cloud tech'],
       gradient: 'from-yellow-500 to-orange-500'
     },
@@ -76,24 +101,44 @@ export const Skills = () => {
             <motion.div
               key={index}
               variants={scaleIn}
-              className="group relative bg-dark-800 rounded-2xl p-8 border border-dark-700 hover:border-primary-500/50 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-primary-500/10"
+              whileHover={{
+                scale: 1.05,
+                transition: { duration: 0.3, ease: [0.22, 1, 0.36, 1] }
+              }}
+              className="group relative bg-dark-800 rounded-2xl p-8 border border-dark-700 hover:border-primary-500/50 transition-all duration-500 hover:shadow-2xl hover:shadow-primary-500/10 cursor-pointer"
             >
-              <div className={`absolute inset-0 bg-gradient-to-br ${category.gradient} opacity-0 group-hover:opacity-5 rounded-2xl transition-opacity duration-500`} />
-              
+              <motion.div
+                className={`absolute inset-0 bg-gradient-to-br ${category.gradient} rounded-2xl`}
+                initial={{ opacity: 0 }}
+                whileHover={{ opacity: 0.08 }}
+                transition={{ duration: 0.4 }}
+              />
+
               <div className="relative z-10">
-                <div className="text-5xl mb-4">{category.icon}</div>
-                <h3 className="text-xl font-display font-bold text-white mb-4">
+                <motion.div
+                  className="text-primary-400 mb-6"
+                  whileHover={{
+                    rotate: [0, -10, 10, -10, 0],
+                    transition: { duration: 0.5 }
+                  }}
+                >
+                  {category.icon}
+                </motion.div>
+                <h3 className="text-xl font-display font-bold text-white mb-4 group-hover:text-primary-400 transition-colors duration-300">
                   {category.title}
                 </h3>
                 <ul className="space-y-2">
                   {category.skills.map((skill, skillIndex) => (
-                    <li 
+                    <motion.li
                       key={skillIndex}
-                      className="flex items-start text-dark-300 text-sm"
+                      initial={{ opacity: 0.8, x: 0 }}
+                      whileHover={{ opacity: 1, x: 5 }}
+                      transition={{ duration: 0.2 }}
+                      className="flex items-start text-dark-300 text-sm group-hover:text-dark-200"
                     >
                       <span className="text-primary-400 mr-2 mt-1">▹</span>
                       <span>{skill}</span>
-                    </li>
+                    </motion.li>
                   ))}
                 </ul>
               </div>

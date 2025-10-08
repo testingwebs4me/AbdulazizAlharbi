@@ -109,28 +109,65 @@ export const Projects = () => {
 
                   <div className="flex flex-wrap gap-2">
                     {project.tech.map((tech, i) => (
-                      <span 
+                      <motion.span
                         key={i}
-                        className="px-3 py-1 bg-dark-700 text-dark-300 rounded-full text-sm border border-dark-600"
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        transition={{ delay: i * 0.1 }}
+                        whileHover={{ scale: 1.1, y: -2 }}
+                        className="px-3 py-1 bg-dark-700 text-dark-300 rounded-full text-sm border border-dark-600 cursor-default"
                       >
                         {tech}
-                      </span>
+                      </motion.span>
                     ))}
                   </div>
                 </div>
 
                 <div className={isEven ? '' : 'lg:order-1'}>
-                  <div className="relative group">
-                    <div className="absolute inset-0 bg-primary-500 opacity-20 rounded-2xl blur-xl group-hover:opacity-30 transition-opacity duration-500" />
+                  <motion.div
+                    className="relative group"
+                    whileHover={{ scale: 1.02 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <motion.div
+                      className="absolute inset-0 bg-primary-500 opacity-20 rounded-2xl blur-xl"
+                      whileHover={{ opacity: 0.35 }}
+                      transition={{ duration: 0.4 }}
+                    />
                     <div className="relative bg-dark-700 rounded-2xl p-8 border border-dark-600 group-hover:border-primary-500/50 transition-all duration-500">
                       <div className="aspect-video bg-dark-800 rounded-lg flex items-center justify-center relative overflow-hidden">
-                        <div className="absolute inset-0 bg-gradient-to-br from-primary-500/10 to-primary-600/10" />
-                        <div className="relative z-10 text-6xl">
-                          {index === 0 ? '📱' : '🚀'}
-                        </div>
+                        <motion.div
+                          className="absolute inset-0 bg-gradient-to-br from-primary-500/10 to-primary-600/10"
+                          animate={{
+                            opacity: [0.1, 0.2, 0.1],
+                          }}
+                          transition={{
+                            duration: 3,
+                            repeat: Infinity,
+                            ease: "easeInOut"
+                          }}
+                        />
+                        <motion.div
+                          className="relative z-10 text-primary-400"
+                          whileHover={{
+                            scale: 1.2,
+                            rotate: 360,
+                            transition: { duration: 0.6 }
+                          }}
+                        >
+                          {index === 0 ? (
+                            <svg className="w-20 h-20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                            </svg>
+                          ) : (
+                            <svg className="w-20 h-20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                            </svg>
+                          )}
+                        </motion.div>
                       </div>
                     </div>
-                  </div>
+                  </motion.div>
                 </div>
               </motion.div>
             );

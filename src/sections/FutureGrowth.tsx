@@ -9,10 +9,38 @@ export const FutureGrowth = () => {
   });
 
   const technologies = [
-    { icon: '🤖', name: 'AI Systems' },
-    { icon: '⚡', name: 'Automation' },
-    { icon: '🔮', name: 'Machine Learning' },
-    { icon: '🌟', name: 'Innovation' }
+    {
+      icon: (
+        <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+        </svg>
+      ),
+      name: 'AI Systems'
+    },
+    {
+      icon: (
+        <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 10V3L4 14h7v7l9-11h-7z" />
+        </svg>
+      ),
+      name: 'Automation'
+    },
+    {
+      icon: (
+        <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" />
+        </svg>
+      ),
+      name: 'Machine Learning'
+    },
+    {
+      icon: (
+        <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+        </svg>
+      ),
+      name: 'Innovation'
+    }
   ];
 
   return (
@@ -55,7 +83,7 @@ export const FutureGrowth = () => {
                 variants={fadeInUp}
                 className="flex flex-col items-center"
               >
-                <div className="w-20 h-20 bg-dark-700 rounded-2xl flex items-center justify-center text-4xl border border-dark-600 hover:border-primary-500/50 transition-all duration-300 hover:scale-110">
+                <div className="w-20 h-20 bg-dark-700 rounded-2xl flex items-center justify-center border border-dark-600 hover:border-primary-500/50 transition-all duration-300 hover:scale-110 text-primary-400">
                   {tech.icon}
                 </div>
                 <span className="mt-3 text-dark-300 text-sm font-medium">{tech.name}</span>
