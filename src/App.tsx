@@ -1,6 +1,5 @@
 import { useEffect } from 'react';
 import { ScrollProgress } from './components/ScrollProgress';
-import { FloatingNav } from './components/FloatingNav';
 import { MagneticCursor } from './components/MagneticCursor';
 import { Hero } from './sections/Hero';
 import { About } from './sections/About';
@@ -23,7 +22,6 @@ function App() {
     <div className="relative">
       <MagneticCursor />
       <ScrollProgress />
-      <FloatingNav />
       <Hero />
       <About />
       <Skills />

@@ -19,7 +19,7 @@ export const FlipCard = ({ front, back, className = '' }: FlipCardProps) => {
       <motion.div
         className="relative w-full h-full preserve-3d"
         animate={{ rotateY: isFlipped ? 180 : 0 }}
-        transition={{ duration: 0.6, type: 'spring', stiffness: 100 }}
+        transition={{ duration: 0.8, type: 'spring', stiffness: 80, damping: 15 }}
       >
         <div className="absolute w-full h-full backface-hidden">
           {front}

@@ -165,53 +165,6 @@ export const Hero = () => {
         </motion.p>
 
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 1.6 }}
-          className="mt-12 flex gap-6 justify-center flex-wrap"
-        >
-          <motion.a
-            href="#projects"
-            data-magnetic
-            whileHover={{
-              scale: 1.05,
-              boxShadow: '0 20px 60px -10px rgba(14, 165, 233, 0.6)',
-            }}
-            whileTap={{ scale: 0.95 }}
-            className="group relative px-10 py-5 bg-primary-500 text-white rounded-full font-semibold text-lg shadow-2xl shadow-primary-500/50 overflow-hidden"
-          >
-            <motion.div
-              className="absolute inset-0 bg-gradient-to-r from-primary-400 to-primary-600"
-              initial={{ x: '-100%' }}
-              whileHover={{ x: '0%' }}
-              transition={{ duration: 0.3 }}
-            />
-            <span className="relative z-10 flex items-center gap-2">
-              See What I've Built
-              <motion.span
-                animate={{ x: [0, 5, 0] }}
-                transition={{ duration: 1.5, repeat: Infinity }}
-              >
-                →
-              </motion.span>
-            </span>
-          </motion.a>
-
-          <motion.a
-            href="#contact"
-            data-magnetic
-            whileHover={{
-              scale: 1.05,
-              borderColor: 'rgba(14, 165, 233, 1)',
-            }}
-            whileTap={{ scale: 0.95 }}
-            className="px-10 py-5 border-2 border-primary-500/50 text-primary-400 rounded-full font-semibold text-lg backdrop-blur-sm hover:bg-primary-500/10 transition-colors"
-          >
-            Get In Touch
-          </motion.a>
-        </motion.div>
-
-        <motion.div
           variants={fadeIn}
           initial="hidden"
           animate="visible"
