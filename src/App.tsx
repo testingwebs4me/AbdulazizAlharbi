@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { ScrollProgress } from './components/ScrollProgress';
 import { MagneticCursor } from './components/MagneticCursor';
+import { ScrollReactiveBackground } from './components/ScrollReactiveBackground';
 import { Hero } from './sections/Hero';
 import { About } from './sections/About';
 import { Skills } from './sections/Skills';
@@ -20,6 +21,7 @@ function App() {
 
   return (
     <div className="relative">
+      <ScrollReactiveBackground />
       <MagneticCursor />
       <ScrollProgress />
       <Hero />
