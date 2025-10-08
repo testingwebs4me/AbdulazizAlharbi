@@ -4,8 +4,16 @@ import { useEffect, useState } from 'react';
 export const MagneticCursor = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [isHovering, setIsHovering] = useState(false);
+  const [isTouchDevice, setIsTouchDevice] = useState(false);
 
   useEffect(() => {
+    const checkTouchDevice = () => {
+      setIsTouchDevice('ontouchstart' in window || navigator.maxTouchPoints > 0);
+    };
+    checkTouchDevice();
+
+    if (isTouchDevice) return;
+
     const handleMouseMove = (e: MouseEvent) => {
       setMousePosition({ x: e.clientX, y: e.clientY });
     };
@@ -30,12 +38,14 @@ export const MagneticCursor = () => {
       document.removeEventListener('mouseover', handleMouseOver);
       document.removeEventListener('mouseout', handleMouseOut);
     };
-  }, []);
+  }, [isTouchDevice]);
+
+  if (isTouchDevice) return null;
 
   return (
     <>
       <motion.div
-        className="fixed w-4 h-4 bg-primary-400 rounded-full pointer-events-none mix-blend-difference z-[100]"
+        className="fixed w-4 h-4 bg-primary-400 rounded-full pointer-events-none mix-blend-difference z-[100] hidden md:block"
         animate={{
           x: mousePosition.x - 8,
           y: mousePosition.y - 8,
@@ -49,7 +59,7 @@ export const MagneticCursor = () => {
         }}
       />
       <motion.div
-        className="fixed w-8 h-8 border-2 border-primary-400/50 rounded-full pointer-events-none z-[99]"
+        className="fixed w-8 h-8 border-2 border-primary-400/50 rounded-full pointer-events-none z-[99] hidden md:block"
         animate={{
           x: mousePosition.x - 16,
           y: mousePosition.y - 16,

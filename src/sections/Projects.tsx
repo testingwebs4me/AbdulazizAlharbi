@@ -11,6 +11,9 @@ export const Projects = () => {
   });
 
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [touchStart, setTouchStart] = useState(0);
+  const [touchEnd, setTouchEnd] = useState(0);
+
   const images = [
     {
       src: 'https://raw.githubusercontent.com/testingwebs4me/AbdulazizAlharbi/main/Screenshot%201447-04-16%20at%2022.07.03.png',
@@ -28,6 +31,23 @@ export const Projects = () => {
     }, 5000);
     return () => clearInterval(interval);
   }, []);
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchEnd = () => {
+    if (touchStart - touchEnd > 75) {
+      setCurrentImageIndex((prev) => (prev + 1) % images.length);
+    }
+    if (touchStart - touchEnd < -75) {
+      setCurrentImageIndex((prev) => (prev - 1 + images.length) % images.length);
+    }
+  };
 
   const sectionRef = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({
@@ -221,12 +241,17 @@ export const Projects = () => {
                                 className="relative aspect-[9/16] bg-dark-800 rounded-xl overflow-hidden border border-primary-500/30"
                                 whileHover={{ y: -4 }}
                                 transition={{ duration: 0.3 }}
+                                onTouchStart={handleTouchStart}
+                                onTouchMove={handleTouchMove}
+                                onTouchEnd={handleTouchEnd}
                               >
                                 <motion.img
                                   key={currentImageIndex}
                                   src={images[currentImageIndex].src}
                                   alt={`QR Ordering System - ${images[currentImageIndex].label}`}
                                   className="w-full h-full object-cover opacity-80"
+                                  loading="lazy"
+                                  decoding="async"
                                   initial={{ opacity: 0 }}
                                   animate={{ opacity: 1 }}
                                   exit={{ opacity: 0 }}

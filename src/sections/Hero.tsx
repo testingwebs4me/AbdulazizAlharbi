@@ -3,8 +3,10 @@ import { useInView } from 'react-intersection-observer';
 import { fadeIn, staggerFast, textReveal, pulseGlow } from '../utils/animations';
 import { AnimatedBackground } from '../components/AnimatedBackground';
 import { useRef, useState } from 'react';
+import { useIsMobile } from '../hooks/useIsMobile';
 
 export const Hero = () => {
+  const isMobile = useIsMobile();
   const { inView } = useInView({
     triggerOnce: true,
     threshold: 0.05
@@ -16,12 +18,13 @@ export const Hero = () => {
     offset: ['start start', 'end start']
   });
 
-  const y = useTransform(scrollYProgress, [0, 1], ['0%', '50%']);
-  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
+  const y = useTransform(scrollYProgress, [0, 1], isMobile ? ['0%', '0%'] : ['0%', '50%']);
+  const opacity = useTransform(scrollYProgress, [0, 0.5], isMobile ? [1, 1] : [1, 0]);
 
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (isMobile) return;
     const rect = e.currentTarget.getBoundingClientRect();
     setMousePosition({
       x: (e.clientX - rect.left - rect.width / 2) / 20,
@@ -99,7 +102,7 @@ export const Hero = () => {
 
         <motion.div
           className="mb-16"
-          style={{
+          style={isMobile ? {} : {
             transform: `perspective(1000px) rotateX(${mousePosition.y * 0.1}deg) rotateY(${mousePosition.x * 0.1}deg)`,
           }}
         >

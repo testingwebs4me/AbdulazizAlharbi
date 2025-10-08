@@ -4,26 +4,38 @@ import { useState, useEffect, useMemo } from 'react';
 
 export const AnimatedBackground = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   const dots = useMemo(() =>
-    Array.from({ length: 50 }, (_, i) => ({
+    Array.from({ length: isMobile ? 15 : 50 }, (_, i) => ({
       id: i,
       baseX: Math.random() * 100,
       baseY: Math.random() * 100,
       delay: Math.random() * 5,
       duration: 5 + Math.random() * 3,
     })),
-    []
+    [isMobile]
   );
 
   useEffect(() => {
+    if (isMobile) return;
+
     const handleMouseMove = (e: MouseEvent) => {
       setMousePosition({ x: e.clientX, y: e.clientY });
     };
 
     window.addEventListener('mousemove', handleMouseMove);
     return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, []);
+  }, [isMobile]);
 
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -31,9 +43,9 @@ export const AnimatedBackground = () => {
         className="absolute -top-1/4 -left-1/4 w-[800px] h-[800px] rounded-full"
         style={{
           background: 'radial-gradient(circle, rgba(56, 102, 126, 0.15) 0%, transparent 70%)',
-          filter: 'blur(60px)',
+          filter: isMobile ? 'blur(40px)' : 'blur(60px)',
         }}
-        animate={{
+        animate={isMobile ? {} : {
           x: [0, 100, 0],
           y: [0, 50, 0],
           scale: [1, 1.1, 1],
@@ -49,9 +61,9 @@ export const AnimatedBackground = () => {
         className="absolute -bottom-1/4 -right-1/4 w-[800px] h-[800px] rounded-full"
         style={{
           background: 'radial-gradient(circle, rgba(56, 102, 126, 0.15) 0%, transparent 70%)',
-          filter: 'blur(60px)',
+          filter: isMobile ? 'blur(40px)' : 'blur(60px)',
         }}
-        animate={{
+        animate={isMobile ? {} : {
           x: [0, -100, 0],
           y: [0, -50, 0],
           scale: [1, 1.2, 1],
@@ -63,18 +75,20 @@ export const AnimatedBackground = () => {
         }}
       />
 
-      <motion.div
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px]"
-        animate={morphPath}
-      >
-        <div
-          className="w-full h-full rounded-full"
-          style={{
-            background: 'radial-gradient(circle, rgba(111, 185, 212, 0.1) 0%, transparent 70%)',
-            filter: 'blur(80px)',
-          }}
-        />
-      </motion.div>
+      {!isMobile && (
+        <motion.div
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px]"
+          animate={morphPath}
+        >
+          <div
+            className="w-full h-full rounded-full"
+            style={{
+              background: 'radial-gradient(circle, rgba(111, 185, 212, 0.1) 0%, transparent 70%)',
+              filter: 'blur(80px)',
+            }}
+          />
+        </motion.div>
+      )}
 
       <svg className="absolute inset-0 w-full h-full opacity-30" xmlns="http://www.w3.org/2000/svg">
         <defs>
@@ -93,7 +107,7 @@ export const AnimatedBackground = () => {
           Math.pow(mousePosition.y - dotScreenY, 2)
         );
         const repelRadius = 150;
-        const repelStrength = Math.max(0, (repelRadius - distance) / repelRadius);
+        const repelStrength = isMobile ? 0 : Math.max(0, (repelRadius - distance) / repelRadius);
         const angle = Math.atan2(
           dotScreenY - mousePosition.y,
           dotScreenX - mousePosition.x
@@ -143,25 +157,29 @@ export const AnimatedBackground = () => {
         );
       })}
 
-      <motion.div
-        className="absolute top-20 right-20 w-32 h-32 border border-primary-500/20"
-        animate={rotateAnimation}
-      >
-        <div className="absolute inset-4 border border-primary-400/30" style={{ transform: 'rotate(45deg)' }} />
-      </motion.div>
+      {!isMobile && (
+        <>
+          <motion.div
+            className="absolute top-20 right-20 w-32 h-32 border border-primary-500/20"
+            animate={rotateAnimation}
+          >
+            <div className="absolute inset-4 border border-primary-400/30" style={{ transform: 'rotate(45deg)' }} />
+          </motion.div>
 
-      <motion.div
-        className="absolute bottom-32 left-32 w-24 h-24 border border-primary-500/20 rounded-full"
-        animate={{
-          scale: [1, 1.2, 1],
-          rotate: [0, 180, 360],
-        }}
-        transition={{
-          duration: 15,
-          repeat: Infinity,
-          ease: 'linear' as const,
-        }}
-      />
+          <motion.div
+            className="absolute bottom-32 left-32 w-24 h-24 border border-primary-500/20 rounded-full"
+            animate={{
+              scale: [1, 1.2, 1],
+              rotate: [0, 180, 360],
+            }}
+            transition={{
+              duration: 15,
+              repeat: Infinity,
+              ease: 'linear' as const,
+            }}
+          />
+        </>
+      )}
     </div>
   );
 };
