@@ -39,42 +39,6 @@ export const AnimatedBackground = () => {
 
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none">
-      <motion.div
-        className="absolute -top-1/4 -left-1/4 w-[800px] h-[800px] rounded-full"
-        style={{
-          background: 'radial-gradient(circle, rgba(56, 102, 126, 0.15) 0%, transparent 70%)',
-          filter: isMobile ? 'blur(40px)' : 'blur(60px)',
-        }}
-        animate={isMobile ? {} : {
-          x: [0, 100, 0],
-          y: [0, 50, 0],
-          scale: [1, 1.1, 1],
-        }}
-        transition={{
-          duration: 20,
-          repeat: Infinity,
-          ease: 'easeInOut' as const,
-        }}
-      />
-
-      <motion.div
-        className="absolute -bottom-1/4 -right-1/4 w-[800px] h-[800px] rounded-full"
-        style={{
-          background: 'radial-gradient(circle, rgba(56, 102, 126, 0.15) 0%, transparent 70%)',
-          filter: isMobile ? 'blur(40px)' : 'blur(60px)',
-        }}
-        animate={isMobile ? {} : {
-          x: [0, -100, 0],
-          y: [0, -50, 0],
-          scale: [1, 1.2, 1],
-        }}
-        transition={{
-          duration: 25,
-          repeat: Infinity,
-          ease: 'easeInOut' as const,
-        }}
-      />
-
       {!isMobile && (
         <motion.div
           className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px]"
