@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { morphPath, rotateAnimation } from '../utils/animations';
+import { rotateAnimation } from '../utils/animations';
 import { useState, useEffect, useMemo } from 'react';
 
 export const AnimatedBackground = () => {
@@ -39,21 +39,6 @@ export const AnimatedBackground = () => {
 
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none">
-      {!isMobile && (
-        <motion.div
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px]"
-          animate={morphPath}
-        >
-          <div
-            className="w-full h-full rounded-full"
-            style={{
-              background: 'radial-gradient(circle, rgba(111, 185, 212, 0.1) 0%, transparent 70%)',
-              filter: 'blur(80px)',
-            }}
-          />
-        </motion.div>
-      )}
-
       <svg className="absolute inset-0 w-full h-full opacity-30" xmlns="http://www.w3.org/2000/svg">
         <defs>
           <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
