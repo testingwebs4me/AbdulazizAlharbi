@@ -20,17 +20,19 @@ function App() {
   }, []);
 
   return (
-    <div className="relative">
+    <div className="relative" style={{ backgroundColor: 'transparent' }}>
       <AnimatedBackground />
-      <MagneticCursor />
-      <ScrollProgress />
-      <Hero />
-      <About />
-      <Skills />
-      <Projects />
-      <Education />
-      <FutureGrowth />
-      <Contact />
+      <div className="relative" style={{ zIndex: 1 }}>
+        <MagneticCursor />
+        <ScrollProgress />
+        <Hero />
+        <About />
+        <Skills />
+        <Projects />
+        <Education />
+        <FutureGrowth />
+        <Contact />
+      </div>
     </div>
   );
 }
