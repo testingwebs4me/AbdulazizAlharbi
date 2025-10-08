@@ -28,7 +28,7 @@ export const Skills = () => {
         </svg>
       ),
       skills: ['Setting up networks', 'Security configs', 'System design'],
-      gradient: 'from-blue-500 to-cyan-500'
+      gradient: 'from-pink-500 to-rose-500'
     },
     {
       title: 'Systems',
@@ -39,7 +39,7 @@ export const Skills = () => {
         </svg>
       ),
       skills: ['Linux stuff', 'VMs (VMware, VirtualBox)', 'Server management'],
-      gradient: 'from-purple-500 to-pink-500'
+      gradient: 'from-red-500 to-pink-500'
     },
     {
       title: 'Problem Solving',
@@ -59,7 +59,7 @@ export const Skills = () => {
         </svg>
       ),
       skills: ['Planning features', 'Getting stuff deployed', 'App store releases'],
-      gradient: 'from-green-500 to-emerald-500'
+      gradient: 'from-rose-500 to-pink-500'
     },
     {
       title: 'Web Development',
@@ -69,7 +69,7 @@ export const Skills = () => {
         </svg>
       ),
       skills: ['Full-stack apps', 'Real-time systems', 'Internal tools'],
-      gradient: 'from-indigo-500 to-blue-500'
+      gradient: 'from-fuchsia-500 to-pink-500'
     },
     {
       title: 'Learning',
@@ -109,9 +109,9 @@ export const Skills = () => {
             className="inline-block px-6 py-2 rounded-full border border-primary-500/30 bg-primary-500/10 text-primary-400 text-sm font-medium tracking-widest uppercase mb-6"
             animate={{
               boxShadow: [
-                '0 0 20px rgba(14, 165, 233, 0.2)',
-                '0 0 40px rgba(14, 165, 233, 0.4)',
-                '0 0 20px rgba(14, 165, 233, 0.2)',
+                '0 0 20px rgba(240, 56, 138, 0.2)',
+                '0 0 40px rgba(240, 56, 138, 0.4)',
+                '0 0 20px rgba(240, 56, 138, 0.2)',
               ],
             }}
             transition={{ duration: 2, repeat: Infinity }}
