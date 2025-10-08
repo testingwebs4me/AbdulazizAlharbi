@@ -14,7 +14,6 @@ export const Education = () => {
     { name: 'IELTS - Score 6.0', year: '2024', status: 'completed' },
     { name: 'AWS Technical Essentials', year: '2024', status: 'completed' },
     { name: 'CCNA', year: '2025', status: 'in-progress' },
-    { name: 'Network+', year: '2025', status: 'in-progress' },
   ];
 
   return (

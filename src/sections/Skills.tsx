@@ -42,7 +42,7 @@ export const Skills = () => {
     {
       title: 'Continuous Growth',
       icon: '📚',
-      skills: ['CCNA Preparation', 'Network+ Training', 'AWS Technical Essentials'],
+      skills: ['CCNA Preparation', 'AWS Technical Essentials', 'Cloud Technologies'],
       gradient: 'from-yellow-500 to-orange-500'
     },
   ];
