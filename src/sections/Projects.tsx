@@ -63,6 +63,7 @@ export const Projects = () => {
       />
 
       <motion.div
+        ref={ref}
         variants={staggerContainer}
         initial="hidden"
         animate={inView ? "visible" : "hidden"}
@@ -95,7 +96,6 @@ export const Projects = () => {
             <motion.div
               key={index}
               variants={scaleIn}
-              ref={ref}
             >
               <TiltCard className="group relative">
                 <div className="relative bg-gradient-to-br from-dark-700/80 to-dark-800/80 backdrop-blur-xl rounded-3xl p-8 md:p-12 border border-dark-600/50 overflow-hidden">
