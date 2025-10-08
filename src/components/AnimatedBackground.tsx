@@ -6,7 +6,7 @@ export const AnimatedBackground = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
   const dots = useMemo(() =>
-    Array.from({ length: 20 }, (_, i) => ({
+    Array.from({ length: 50 }, (_, i) => ({
       id: i,
       baseX: Math.random() * 100,
       baseY: Math.random() * 100,
