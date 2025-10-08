@@ -1,101 +1,242 @@
-import { motion } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { fadeIn, fadeInUp, staggerContainer, magneticHover, pressEffect, easings } from '../utils/animations';
+import { fadeIn, staggerFast, textReveal, pulseGlow } from '../utils/animations';
+import { AnimatedBackground } from '../components/AnimatedBackground';
+import { useRef, useState } from 'react';
 
 export const Hero = () => {
-  const [ref, inView] = useInView({
+  const { inView } = useInView({
     triggerOnce: true,
     threshold: 0.05
   });
 
+  const sectionRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ['start start', 'end start']
+  });
+
+  const y = useTransform(scrollYProgress, [0, 1], ['0%', '50%']);
+  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
+
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    setMousePosition({
+      x: (e.clientX - rect.left - rect.width / 2) / 20,
+      y: (e.clientY - rect.top - rect.height / 2) / 20,
+    });
+  };
+
+  const firstName = 'Abdulaziz'.split('');
+  const lastName = 'Alharbi'.split('');
+
   return (
     <section
       id="home"
-      ref={ref}
+      ref={sectionRef}
       className="snap-section min-h-screen flex items-center justify-center relative overflow-hidden"
+      onMouseMove={handleMouseMove}
     >
       <div className="absolute inset-0 bg-gradient-to-br from-dark-900 via-dark-800 to-dark-900" />
-      
-      <motion.div
-        className="absolute inset-0 opacity-15"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 0.15 }}
-        transition={{ duration: 1.5, ease: easings.smooth }}
-      >
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary-500 rounded-full filter blur-[120px] will-change-transform" />
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-primary-600 rounded-full filter blur-[120px] will-change-transform" />
-      </motion.div>
+
+      <AnimatedBackground />
 
       <motion.div
-        variants={staggerContainer}
-        initial="hidden"
-        animate={inView ? "visible" : "hidden"}
-        className="relative z-10 text-center px-6 max-w-5xl mx-auto"
+        style={{ y, opacity }}
+        className="relative z-10 text-center px-6 max-w-6xl mx-auto"
       >
-        <motion.div variants={fadeIn} className="mb-6">
-          <span className="text-primary-400 text-lg md:text-xl font-medium tracking-wide">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          className="mb-8"
+        >
+          <motion.span
+            className="inline-block px-6 py-2 rounded-full border border-primary-500/30 bg-primary-500/10 text-primary-400 text-sm md:text-base font-medium tracking-wider uppercase backdrop-blur-sm"
+            animate={pulseGlow}
+          >
             Hello, I'm
-          </span>
+          </motion.span>
         </motion.div>
 
-        <motion.h1 
-          variants={fadeInUp}
-          className="text-5xl md:text-7xl lg:text-8xl font-display font-bold mb-6 leading-tight"
+        <motion.div
+          className="mb-6"
+          style={{
+            transform: `perspective(1000px) rotateX(${mousePosition.y * 0.1}deg) rotateY(${mousePosition.x * 0.1}deg)`,
+          }}
         >
-          Abdulaziz <span className="text-gradient">Alharbi</span>
-        </motion.h1>
+          <motion.h1
+            variants={staggerFast}
+            initial="hidden"
+            animate={inView ? "visible" : "hidden"}
+            className="text-6xl md:text-8xl lg:text-9xl font-display font-bold leading-tight"
+          >
+            <div className="flex justify-center gap-2 md:gap-3 mb-2 md:mb-4">
+              {firstName.map((char, i) => (
+                <motion.span
+                  key={i}
+                  custom={i}
+                  variants={textReveal}
+                  className="inline-block"
+                  whileHover={{
+                    scale: 1.2,
+                    rotate: [0, -10, 10, 0],
+                    color: '#38bdf8',
+                    textShadow: '0 0 20px rgba(56, 189, 248, 0.8)',
+                    transition: { duration: 0.3 }
+                  }}
+                >
+                  {char}
+                </motion.span>
+              ))}
+            </div>
+            <div className="flex justify-center gap-2 md:gap-3">
+              {lastName.map((char, i) => (
+                <motion.span
+                  key={i}
+                  custom={i + firstName.length}
+                  variants={textReveal}
+                  className="inline-block text-gradient"
+                  style={{
+                    backgroundImage: 'linear-gradient(135deg, #38bdf8, #0ea5e9, #0284c7)',
+                    backgroundSize: '200% 200%',
+                  }}
+                  animate={{
+                    backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'],
+                  }}
+                  transition={{
+                    duration: 5,
+                    repeat: Infinity,
+                    ease: 'linear',
+                  }}
+                  whileHover={{
+                    scale: 1.2,
+                    rotate: [0, 10, -10, 0],
+                    transition: { duration: 0.3 }
+                  }}
+                >
+                  {char}
+                </motion.span>
+              ))}
+            </div>
+          </motion.h1>
+        </motion.div>
 
-        <motion.div variants={fadeInUp} className="space-y-3">
-          <p className="text-2xl md:text-3xl lg:text-4xl text-dark-200 font-light">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 1 }}
+          className="space-y-4 mb-8"
+        >
+          <motion.p
+            className="text-3xl md:text-4xl lg:text-5xl font-display font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-dark-200"
+            whileHover={{ scale: 1.05 }}
+          >
             IT Specialist
-          </p>
-          <p className="text-xl md:text-2xl text-dark-300">
-            Product Developer • Network Engineer
-          </p>
+          </motion.p>
+          <motion.div
+            className="flex items-center justify-center gap-4 text-xl md:text-2xl text-primary-400"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1.2 }}
+          >
+            <span className="font-medium">Product Developer</span>
+            <motion.span
+              animate={{ rotate: 360 }}
+              transition={{ duration: 2, repeat: Infinity, ease: 'linear' }}
+              className="text-primary-500"
+            >
+              •
+            </motion.span>
+            <span className="font-medium">Network Engineer</span>
+          </motion.div>
         </motion.div>
 
         <motion.p
-          variants={fadeInUp}
-          className="mt-8 text-lg md:text-xl text-dark-300 max-w-2xl mx-auto leading-relaxed"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 1.4 }}
+          className="mt-8 text-xl md:text-2xl text-dark-200 max-w-3xl mx-auto leading-relaxed font-light"
         >
-          I build things that actually work and get shipped — from web apps to network solutions
+          I build things that actually work and get shipped —{' '}
+          <span className="text-primary-400 font-medium">from web apps to network solutions</span>
         </motion.p>
 
         <motion.div
-          variants={fadeInUp}
-          className="mt-12"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 1.6 }}
+          className="mt-12 flex gap-6 justify-center flex-wrap"
         >
           <motion.a
-            href="#about"
-            whileHover={magneticHover}
-            whileTap={pressEffect}
-            className="inline-block px-8 py-4 bg-primary-500 text-white rounded-full font-medium text-lg shadow-lg shadow-primary-500/30"
+            href="#projects"
+            data-magnetic
+            whileHover={{
+              scale: 1.05,
+              boxShadow: '0 20px 60px -10px rgba(14, 165, 233, 0.6)',
+            }}
+            whileTap={{ scale: 0.95 }}
+            className="group relative px-10 py-5 bg-primary-500 text-white rounded-full font-semibold text-lg shadow-2xl shadow-primary-500/50 overflow-hidden"
           >
-            See What I've Built
+            <motion.div
+              className="absolute inset-0 bg-gradient-to-r from-primary-400 to-primary-600"
+              initial={{ x: '-100%' }}
+              whileHover={{ x: '0%' }}
+              transition={{ duration: 0.3 }}
+            />
+            <span className="relative z-10 flex items-center gap-2">
+              See What I've Built
+              <motion.span
+                animate={{ x: [0, 5, 0] }}
+                transition={{ duration: 1.5, repeat: Infinity }}
+              >
+                →
+              </motion.span>
+            </span>
+          </motion.a>
+
+          <motion.a
+            href="#contact"
+            data-magnetic
+            whileHover={{
+              scale: 1.05,
+              borderColor: 'rgba(14, 165, 233, 1)',
+            }}
+            whileTap={{ scale: 0.95 }}
+            className="px-10 py-5 border-2 border-primary-500/50 text-primary-400 rounded-full font-semibold text-lg backdrop-blur-sm hover:bg-primary-500/10 transition-colors"
+          >
+            Get In Touch
           </motion.a>
         </motion.div>
 
         <motion.div
           variants={fadeIn}
+          initial="hidden"
+          animate="visible"
           className="absolute bottom-10 left-1/2 transform -translate-x-1/2"
         >
           <motion.div
-            className="flex flex-col items-center"
-            animate={{ y: [0, 8, 0] }}
-            transition={{ duration: 2, repeat: Infinity, ease: easings.smooth }}
+            className="flex flex-col items-center cursor-pointer"
+            animate={{ y: [0, 12, 0] }}
+            transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
+            whileHover={{ scale: 1.1 }}
           >
-            <span className="text-dark-400 text-sm mb-2">Scroll to explore</span>
-            <svg
-              className="w-6 h-6 text-primary-400"
-              fill="none"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
+            <span className="text-dark-400 text-sm mb-3 font-medium">Scroll to explore</span>
+            <motion.div
+              className="w-6 h-10 border-2 border-primary-500/50 rounded-full flex justify-center p-2"
+              animate={{
+                borderColor: ['rgba(14, 165, 233, 0.5)', 'rgba(14, 165, 233, 1)', 'rgba(14, 165, 233, 0.5)'],
+              }}
+              transition={{ duration: 2, repeat: Infinity }}
             >
-              <path d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
-            </svg>
+              <motion.div
+                className="w-1 h-2 bg-primary-400 rounded-full"
+                animate={{ y: [0, 12, 0], opacity: [1, 0, 1] }}
+                transition={{ duration: 2, repeat: Infinity }}
+              />
+            </motion.div>
           </motion.div>
         </motion.div>
       </motion.div>
