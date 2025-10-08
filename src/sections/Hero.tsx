@@ -51,7 +51,7 @@ export const Hero = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="mb-6"
+          className="mb-3"
         >
           <motion.span
             className="inline-block px-6 py-2 rounded-full border border-primary-500/30 bg-primary-500/10 text-primary-400 text-sm md:text-base font-medium tracking-wider uppercase backdrop-blur-sm"
@@ -62,7 +62,43 @@ export const Hero = () => {
         </motion.div>
 
         <motion.div
-          className="mb-4"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.6 }}
+          className="space-y-2 mb-8"
+        >
+          <motion.div
+            className="flex items-center justify-center gap-4 text-lg md:text-xl text-primary-400"
+          >
+            <span className="font-medium">Product Developer</span>
+            <motion.span
+              animate={{ rotate: 360 }}
+              transition={{ duration: 2, repeat: Infinity, ease: 'linear' }}
+              className="text-primary-500"
+            >
+              •
+            </motion.span>
+            <span className="font-medium">Network Engineer</span>
+          </motion.div>
+          <motion.p
+            className="text-2xl md:text-3xl font-display font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-dark-200"
+          >
+            IT Specialist
+          </motion.p>
+        </motion.div>
+
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 1 }}
+          className="text-lg md:text-xl text-dark-200 max-w-2xl mx-auto leading-relaxed font-light mb-12"
+        >
+          I build things that actually work and get shipped —{' '}
+          <span className="text-primary-400 font-medium">from networking to webapps</span>
+        </motion.p>
+
+        <motion.div
+          className="mb-16"
           style={{
             transform: `perspective(1000px) rotateX(${mousePosition.y * 0.1}deg) rotateY(${mousePosition.x * 0.1}deg)`,
           }}
@@ -124,45 +160,6 @@ export const Hero = () => {
           </motion.h1>
         </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 1 }}
-          className="space-y-3 mb-6"
-        >
-          <motion.div
-            className="flex items-center justify-center gap-4 text-xl md:text-2xl text-primary-400"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1.2 }}
-          >
-            <span className="font-medium">Product Developer</span>
-            <motion.span
-              animate={{ rotate: 360 }}
-              transition={{ duration: 2, repeat: Infinity, ease: 'linear' }}
-              className="text-primary-500"
-            >
-              •
-            </motion.span>
-            <span className="font-medium">Network Engineer</span>
-          </motion.div>
-          <motion.p
-            className="text-3xl md:text-4xl lg:text-5xl font-display font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-dark-200"
-            whileHover={{ scale: 1.05 }}
-          >
-            IT Specialist
-          </motion.p>
-        </motion.div>
-
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 1.4 }}
-          className="mt-8 text-xl md:text-2xl text-dark-200 max-w-3xl mx-auto leading-relaxed font-light"
-        >
-          I build things that actually work and get shipped —{' '}
-          <span className="text-primary-400 font-medium">from networking to webapps</span>
-        </motion.p>
 
         <motion.div
           variants={fadeIn}
