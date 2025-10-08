@@ -25,7 +25,7 @@ export const fadeInUp: Variants = {
   hidden: {
     opacity: 0,
     y: 40,
-    filter: 'blur(4px)'
+    filter: 'blur(2px)'
   },
   visible: {
     opacity: 1,
@@ -41,7 +41,7 @@ export const fadeInUp: Variants = {
 export const fadeIn: Variants = {
   hidden: {
     opacity: 0,
-    filter: 'blur(4px)'
+    filter: 'blur(2px)'
   },
   visible: {
     opacity: 1,
@@ -68,7 +68,7 @@ export const slideInLeft: Variants = {
   hidden: {
     opacity: 0,
     x: -60,
-    filter: 'blur(4px)'
+    filter: 'blur(2px)'
   },
   visible: {
     opacity: 1,
@@ -85,7 +85,7 @@ export const slideInRight: Variants = {
   hidden: {
     opacity: 0,
     x: 60,
-    filter: 'blur(4px)'
+    filter: 'blur(2px)'
   },
   visible: {
     opacity: 1,
@@ -102,7 +102,7 @@ export const scaleIn: Variants = {
   hidden: {
     opacity: 0,
     scale: 0.92,
-    filter: 'blur(4px)'
+    filter: 'blur(2px)'
   },
   visible: {
     opacity: 1,

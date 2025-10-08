@@ -37,6 +37,7 @@ html.lenis, html.lenis body {
 
 .lenis.lenis-smooth {
   scroll-behavior: auto !important;
+  will-change: transform;
 }
 
 .lenis.lenis-smooth [data-lenis-prevent] {
@@ -83,6 +84,8 @@ body {
   padding-right: 1.5rem;
   padding-top: 5rem;
   padding-bottom: 5rem;
+  contain: layout style paint;
+  transform: translateZ(0);
 }
 
 @media (min-width: 768px) {
