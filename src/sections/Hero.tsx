@@ -51,7 +51,7 @@ export const Hero = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="mb-8"
+          className="mb-6"
         >
           <motion.span
             className="inline-block px-6 py-2 rounded-full border border-primary-500/30 bg-primary-500/10 text-primary-400 text-sm md:text-base font-medium tracking-wider uppercase backdrop-blur-sm"
@@ -62,7 +62,7 @@ export const Hero = () => {
         </motion.div>
 
         <motion.div
-          className="mb-6"
+          className="mb-4"
           style={{
             transform: `perspective(1000px) rotateX(${mousePosition.y * 0.1}deg) rotateY(${mousePosition.x * 0.1}deg)`,
           }}
@@ -128,7 +128,7 @@ export const Hero = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 1 }}
-          className="space-y-4 mb-8"
+          className="space-y-3 mb-6"
         >
           <motion.div
             className="flex items-center justify-center gap-4 text-xl md:text-2xl text-primary-400"

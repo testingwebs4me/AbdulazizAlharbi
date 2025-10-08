@@ -7,7 +7,7 @@ import { useRef } from 'react';
 export const Projects = () => {
   const [ref, inView] = useInView({
     triggerOnce: true,
-    threshold: 0.05
+    threshold: 0.01
   });
 
   const sectionRef = useRef<HTMLElement>(null);
