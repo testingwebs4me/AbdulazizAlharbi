@@ -1,7 +1,6 @@
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { fadeIn, staggerFast, textReveal } from '../utils/animations';
-import { AnimatedBackground } from '../components/AnimatedBackground';
 import { useRef, useState } from 'react';
 import { useIsMobile } from '../hooks/useIsMobile';
 
@@ -43,8 +42,6 @@ export const Hero = () => {
       onMouseMove={handleMouseMove}
     >
       <div className="absolute inset-0 bg-gradient-to-br from-dark-900 via-dark-800 to-dark-900" />
-
-      <AnimatedBackground />
 
       <motion.div
         style={{ y, opacity }}
