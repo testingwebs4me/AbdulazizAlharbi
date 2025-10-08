@@ -40,10 +40,10 @@ export const Projects = () => {
   ];
 
   return (
-    <section 
+    <section
       id="projects"
       ref={ref}
-      className="section-padding bg-dark-800 relative overflow-hidden"
+      className="snap-section section-padding bg-dark-800 relative overflow-hidden"
     >
       <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary-500 to-transparent opacity-50" />
       

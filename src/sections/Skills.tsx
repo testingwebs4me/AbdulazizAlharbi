@@ -48,10 +48,10 @@ export const Skills = () => {
   ];
 
   return (
-    <section 
+    <section
       id="skills"
       ref={ref}
-      className="section-padding bg-dark-900 relative"
+      className="snap-section section-padding bg-dark-900 relative"
     >
       <motion.div
         variants={staggerContainer}

@@ -9,10 +9,10 @@ export const Hero = () => {
   });
 
   return (
-    <section 
+    <section
       id="home"
       ref={ref}
-      className="min-h-screen flex items-center justify-center relative overflow-hidden"
+      className="snap-section min-h-screen flex items-center justify-center relative overflow-hidden"
     >
       <div className="absolute inset-0 bg-gradient-to-br from-dark-900 via-dark-800 to-dark-900" />
       

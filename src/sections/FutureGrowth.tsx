@@ -16,10 +16,10 @@ export const FutureGrowth = () => {
   ];
 
   return (
-    <section 
+    <section
       id="future"
       ref={ref}
-      className="section-padding bg-dark-800 relative overflow-hidden"
+      className="snap-section section-padding bg-dark-800 relative overflow-hidden"
     >
       <div className="absolute inset-0 bg-gradient-to-b from-dark-800 via-dark-900 to-dark-800" />
       <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary-500/5 rounded-full filter blur-3xl" />
