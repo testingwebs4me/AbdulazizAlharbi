@@ -2,13 +2,32 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { fadeInUp, staggerContainer, scaleIn, easings, durations } from '../utils/animations';
 import { TiltCard } from '../components/TiltCard';
-import { useRef } from 'react';
+import { useRef, useState, useEffect } from 'react';
 
 export const Projects = () => {
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.01
   });
+
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const images = [
+    {
+      src: 'https://raw.githubusercontent.com/testingwebs4me/AbdulazizAlharbi/main/Screenshot%201447-04-16%20at%2022.07.03.png',
+      label: 'Maaden Interface'
+    },
+    {
+      src: 'https://raw.githubusercontent.com/testingwebs4me/AbdulazizAlharbi/main/blur.png',
+      label: 'Remat Al-Riyadh Interface'
+    }
+  ];
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prev) => (prev + 1) % images.length);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, []);
 
   const sectionRef = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({
@@ -198,38 +217,34 @@ export const Projects = () => {
                           <div className="absolute inset-0 bg-gradient-to-br from-primary-500/30 to-primary-600/30 rounded-2xl blur-2xl group-hover:blur-3xl transition-all" />
                           <div className="relative bg-dark-900/70 backdrop-blur-sm rounded-2xl p-4 border border-primary-500/20">
                             {index === 0 ? (
-                              <div className="space-y-3">
-                                <motion.div
-                                  className="relative aspect-[9/16] bg-dark-800 rounded-xl overflow-hidden border border-primary-500/30"
-                                  whileHover={{ y: -4 }}
-                                  transition={{ duration: 0.3 }}
-                                >
-                                  <img
-                                    src="https://raw.githubusercontent.com/testingwebs4me/AbdulazizAlharbi/main/Screenshot%201447-04-16%20at%2022.07.03.png"
-                                    alt="QR Ordering System - Maaden"
-                                    className="w-full h-full object-cover opacity-80"
-                                  />
-                                  <div className="absolute inset-0 bg-gradient-to-t from-dark-900/90 via-dark-900/40 to-transparent" />
-                                  <div className="absolute bottom-4 left-4 right-4">
-                                    <p className="text-xs text-primary-300 font-medium">Maaden Interface</p>
-                                  </div>
-                                </motion.div>
-                                <motion.div
-                                  className="relative aspect-[9/16] bg-dark-800 rounded-xl overflow-hidden border border-primary-500/30"
-                                  whileHover={{ y: -4 }}
-                                  transition={{ duration: 0.3 }}
-                                >
-                                  <img
-                                    src="https://raw.githubusercontent.com/testingwebs4me/AbdulazizAlharbi/main/blur.png"
-                                    alt="QR Ordering System - Remat"
-                                    className="w-full h-full object-cover opacity-80"
-                                  />
-                                  <div className="absolute inset-0 bg-gradient-to-t from-dark-900/90 via-dark-900/40 to-transparent" />
-                                  <div className="absolute bottom-4 left-4 right-4">
-                                    <p className="text-xs text-primary-300 font-medium">Remat Al-Riyadh Interface</p>
-                                  </div>
-                                </motion.div>
-                              </div>
+                              <motion.div
+                                className="relative aspect-[9/16] bg-dark-800 rounded-xl overflow-hidden border border-primary-500/30"
+                                whileHover={{ y: -4 }}
+                                transition={{ duration: 0.3 }}
+                              >
+                                <motion.img
+                                  key={currentImageIndex}
+                                  src={images[currentImageIndex].src}
+                                  alt={`QR Ordering System - ${images[currentImageIndex].label}`}
+                                  className="w-full h-full object-cover opacity-80"
+                                  initial={{ opacity: 0 }}
+                                  animate={{ opacity: 1 }}
+                                  exit={{ opacity: 0 }}
+                                  transition={{ duration: 0.5 }}
+                                />
+                                <div className="absolute inset-0 bg-gradient-to-t from-dark-900/90 via-dark-900/40 to-transparent" />
+                                <div className="absolute bottom-4 left-4 right-4">
+                                  <motion.p
+                                    key={`label-${currentImageIndex}`}
+                                    className="text-xs text-primary-300 font-medium"
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
+                                    transition={{ duration: 0.5 }}
+                                  >
+                                    {images[currentImageIndex].label}
+                                  </motion.p>
+                                </div>
+                              </motion.div>
                             ) : (
                               <div className="aspect-square bg-gradient-to-br from-dark-800 to-dark-900 rounded-xl flex items-center justify-center relative overflow-hidden">
                                 <div className="absolute inset-0 bg-gradient-to-br from-primary-500/20 to-primary-600/20" />
