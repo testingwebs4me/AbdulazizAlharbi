@@ -30,7 +30,7 @@ export const AnimatedBackground = () => {
       <motion.div
         className="absolute -top-1/4 -left-1/4 w-[800px] h-[800px] rounded-full"
         style={{
-          background: 'radial-gradient(circle, rgba(240, 56, 138, 0.15) 0%, transparent 70%)',
+          background: 'radial-gradient(circle, rgba(56, 102, 126, 0.15) 0%, transparent 70%)',
           filter: 'blur(60px)',
         }}
         animate={{
@@ -48,7 +48,7 @@ export const AnimatedBackground = () => {
       <motion.div
         className="absolute -bottom-1/4 -right-1/4 w-[800px] h-[800px] rounded-full"
         style={{
-          background: 'radial-gradient(circle, rgba(240, 56, 138, 0.15) 0%, transparent 70%)',
+          background: 'radial-gradient(circle, rgba(56, 102, 126, 0.15) 0%, transparent 70%)',
           filter: 'blur(60px)',
         }}
         animate={{
@@ -70,7 +70,7 @@ export const AnimatedBackground = () => {
         <div
           className="w-full h-full rounded-full"
           style={{
-            background: 'radial-gradient(circle, rgba(247, 109, 170, 0.1) 0%, transparent 70%)',
+            background: 'radial-gradient(circle, rgba(111, 185, 212, 0.1) 0%, transparent 70%)',
             filter: 'blur(80px)',
           }}
         />
@@ -79,7 +79,7 @@ export const AnimatedBackground = () => {
       <svg className="absolute inset-0 w-full h-full opacity-30" xmlns="http://www.w3.org/2000/svg">
         <defs>
           <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
-            <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(240, 56, 138, 0.1)" strokeWidth="0.5"/>
+            <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(56, 102, 126, 0.1)" strokeWidth="0.5"/>
           </pattern>
         </defs>
         <rect width="100%" height="100%" fill="url(#grid)" />

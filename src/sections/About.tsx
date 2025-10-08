@@ -49,9 +49,9 @@ export const About = () => {
             className="inline-block px-6 py-2 rounded-full border border-primary-500/30 bg-primary-500/10 text-primary-400 text-sm font-medium tracking-widest uppercase mb-6"
             animate={{
               boxShadow: [
-                '0 0 20px rgba(240, 56, 138, 0.2)',
-                '0 0 40px rgba(240, 56, 138, 0.4)',
-                '0 0 20px rgba(240, 56, 138, 0.2)',
+                '0 0 20px rgba(56, 102, 126, 0.2)',
+                '0 0 40px rgba(56, 102, 126, 0.4)',
+                '0 0 20px rgba(56, 102, 126, 0.2)',
               ],
             }}
             transition={{ duration: 2, repeat: Infinity }}

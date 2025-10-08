@@ -28,7 +28,7 @@ export const Skills = () => {
         </svg>
       ),
       skills: ['Setting up networks', 'Security configs', 'System design'],
-      gradient: 'from-pink-500 to-rose-500'
+      gradient: 'from-primary-300 to-primary-500'
     },
     {
       title: 'Systems',
@@ -39,7 +39,7 @@ export const Skills = () => {
         </svg>
       ),
       skills: ['Linux stuff', 'VMs (VMware, VirtualBox)', 'Server management'],
-      gradient: 'from-red-500 to-pink-500'
+      gradient: 'from-primary-400 to-primary-600'
     },
     {
       title: 'Problem Solving',
@@ -49,7 +49,7 @@ export const Skills = () => {
         </svg>
       ),
       skills: ['Fixing things', 'Troubleshooting', 'Support'],
-      gradient: 'from-orange-500 to-red-500'
+      gradient: 'from-dark-500 to-dark-600'
     },
     {
       title: 'Shipping Products',
@@ -59,7 +59,7 @@ export const Skills = () => {
         </svg>
       ),
       skills: ['Planning features', 'Getting stuff deployed', 'App store releases'],
-      gradient: 'from-rose-500 to-pink-500'
+      gradient: 'from-primary-500 to-primary-700'
     },
     {
       title: 'Web Development',
@@ -69,7 +69,7 @@ export const Skills = () => {
         </svg>
       ),
       skills: ['Full-stack apps', 'Real-time systems', 'Internal tools'],
-      gradient: 'from-fuchsia-500 to-pink-500'
+      gradient: 'from-dark-600 to-dark-700'
     },
     {
       title: 'Learning',
@@ -79,7 +79,7 @@ export const Skills = () => {
         </svg>
       ),
       skills: ['CCNA prep', 'AWS', 'Cloud tech'],
-      gradient: 'from-yellow-500 to-orange-500'
+      gradient: 'from-primary-200 to-primary-400'
     },
   ];
 
@@ -109,9 +109,9 @@ export const Skills = () => {
             className="inline-block px-6 py-2 rounded-full border border-primary-500/30 bg-primary-500/10 text-primary-400 text-sm font-medium tracking-widest uppercase mb-6"
             animate={{
               boxShadow: [
-                '0 0 20px rgba(240, 56, 138, 0.2)',
-                '0 0 40px rgba(240, 56, 138, 0.4)',
-                '0 0 20px rgba(240, 56, 138, 0.2)',
+                '0 0 20px rgba(56, 102, 126, 0.2)',
+                '0 0 40px rgba(56, 102, 126, 0.4)',
+                '0 0 20px rgba(56, 102, 126, 0.2)',
               ],
             }}
             transition={{ duration: 2, repeat: Infinity }}

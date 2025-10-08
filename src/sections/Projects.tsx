@@ -31,7 +31,7 @@ export const Projects = () => {
       ],
       impact: 'People actually use it. No more missed orders or confusion. Just works.',
       tech: ['Web Dev', 'Real-time Updates', 'QR Codes'],
-      gradient: 'from-pink-500 to-rose-500'
+      gradient: 'from-primary-400 to-primary-600'
     },
     {
       title: 'App Store Launch',
@@ -45,7 +45,7 @@ export const Projects = () => {
       ],
       impact: 'App went live on both stores. Months of delays cleared in a few weeks.',
       tech: ['iOS', 'Android', 'Problem Solving'],
-      gradient: 'from-red-500 to-pink-500'
+      gradient: 'from-dark-500 to-dark-600'
     }
   ];
 
@@ -74,9 +74,9 @@ export const Projects = () => {
             className="inline-block px-6 py-2 rounded-full border border-primary-500/30 bg-primary-500/10 text-primary-400 text-sm font-medium tracking-widest uppercase mb-6"
             animate={{
               boxShadow: [
-                '0 0 20px rgba(240, 56, 138, 0.2)',
-                '0 0 40px rgba(240, 56, 138, 0.4)',
-                '0 0 20px rgba(240, 56, 138, 0.2)',
+                '0 0 20px rgba(56, 102, 126, 0.2)',
+                '0 0 40px rgba(56, 102, 126, 0.4)',
+                '0 0 20px rgba(56, 102, 126, 0.2)',
               ],
             }}
             transition={{ duration: 2, repeat: Infinity }}
@@ -179,7 +179,7 @@ export const Projects = () => {
                               whileHover={{
                                 scale: 1.1,
                                 y: -3,
-                                boxShadow: '0 10px 30px -10px rgba(240, 56, 138, 0.5)',
+                                boxShadow: '0 10px 30px -10px rgba(56, 102, 126, 0.5)',
                               }}
                               className="px-4 py-2 bg-dark-900/70 backdrop-blur-sm text-primary-300 rounded-full text-sm font-medium border border-primary-500/30 cursor-default"
                             >
@@ -202,7 +202,7 @@ export const Projects = () => {
                               <motion.div
                                 className="absolute inset-0"
                                 style={{
-                                  background: 'radial-gradient(circle at 50% 50%, rgba(240, 56, 138, 0.3) 0%, transparent 70%)',
+                                  background: 'radial-gradient(circle at 50% 50%, rgba(56, 102, 126, 0.3) 0%, transparent 70%)',
                                 }}
                                 animate={{
                                   scale: [1, 1.2, 1],

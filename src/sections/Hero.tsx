@@ -119,8 +119,8 @@ export const Hero = () => {
                   whileHover={{
                     scale: 1.2,
                     rotate: [0, -10, 10, 0],
-                    color: '#f76daa',
-                    textShadow: '0 0 20px rgba(247, 109, 170, 0.8)',
+                    color: '#6fb9d4',
+                    textShadow: '0 0 20px rgba(111, 185, 212, 0.8)',
                     transition: { duration: 0.3 }
                   }}
                 >
@@ -136,7 +136,7 @@ export const Hero = () => {
                   variants={textReveal}
                   className="inline-block text-gradient"
                   style={{
-                    backgroundImage: 'linear-gradient(135deg, #f76daa, #f0388a, #e01570)',
+                    backgroundImage: 'linear-gradient(135deg, #6fb9d4, #38667E, #1B435E)',
                     backgroundSize: '200% 200%',
                   }}
                   animate={{
@@ -177,7 +177,7 @@ export const Hero = () => {
             <motion.div
               className="w-6 h-10 border-2 border-primary-500/50 rounded-full flex justify-center p-2"
               animate={{
-                borderColor: ['rgba(240, 56, 138, 0.5)', 'rgba(240, 56, 138, 1)', 'rgba(240, 56, 138, 0.5)'],
+                borderColor: ['rgba(56, 102, 126, 0.5)', 'rgba(56, 102, 126, 1)', 'rgba(56, 102, 126, 0.5)'],
               }}
               transition={{ duration: 2, repeat: Infinity }}
             >
