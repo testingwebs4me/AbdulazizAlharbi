@@ -1,11 +1,11 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { fadeInUp, staggerContainer } from '../utils/animations';
+import { fadeInUp, staggerContainer, magneticHover } from '../utils/animations';
 
 export const Education = () => {
   const [ref, inView] = useInView({
     triggerOnce: true,
-    threshold: 0.1
+    threshold: 0.05
   });
 
   const certifications = [
@@ -73,9 +73,10 @@ export const Education = () => {
               <motion.div
                 key={index}
                 variants={fadeInUp}
+                whileHover={magneticHover}
                 className="relative group"
               >
-                <div className="bg-dark-800 rounded-xl p-6 border border-dark-700 hover:border-primary-500/50 transition-all duration-300 h-full">
+                <div className="bg-dark-800 rounded-xl p-6 border border-dark-700 hover:border-primary-500/50 transition-colors duration-300 h-full cursor-default">
                   <div className="flex items-start justify-between mb-2">
                     <h4 className="text-lg font-semibold text-white group-hover:text-primary-400 transition-colors">
                       {cert.name}

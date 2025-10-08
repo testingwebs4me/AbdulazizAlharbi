@@ -1,11 +1,11 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { fadeIn, fadeInUp, staggerContainer } from '../utils/animations';
+import { fadeIn, fadeInUp, staggerContainer, magneticHover, pressEffect, easings } from '../utils/animations';
 
 export const Hero = () => {
   const [ref, inView] = useInView({
     triggerOnce: true,
-    threshold: 0.1
+    threshold: 0.05
   });
 
   return (
@@ -17,37 +17,13 @@ export const Hero = () => {
       <div className="absolute inset-0 bg-gradient-to-br from-dark-900 via-dark-800 to-dark-900" />
       
       <motion.div
-        className="absolute inset-0 opacity-20"
+        className="absolute inset-0 opacity-15"
         initial={{ opacity: 0 }}
-        animate={{ opacity: 0.2 }}
-        transition={{ duration: 2 }}
+        animate={{ opacity: 0.15 }}
+        transition={{ duration: 1.5, ease: easings.smooth }}
       >
-        <motion.div
-          className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary-500 rounded-full filter blur-[120px]"
-          animate={{
-            scale: [1, 1.2, 1],
-            x: [0, 50, 0],
-            y: [0, 30, 0],
-          }}
-          transition={{
-            duration: 8,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-        />
-        <motion.div
-          className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-primary-600 rounded-full filter blur-[120px]"
-          animate={{
-            scale: [1, 1.1, 1],
-            x: [0, -30, 0],
-            y: [0, -50, 0],
-          }}
-          transition={{
-            duration: 10,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-        />
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary-500 rounded-full filter blur-[120px] will-change-transform" />
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-primary-600 rounded-full filter blur-[120px] will-change-transform" />
       </motion.div>
 
       <motion.div
@@ -91,36 +67,36 @@ export const Hero = () => {
         >
           <motion.a
             href="#about"
-            whileHover={{
-              scale: 1.05,
-              boxShadow: "0 20px 40px rgba(14, 165, 233, 0.3)"
-            }}
-            whileTap={{ scale: 0.95 }}
-            transition={{ duration: 0.2 }}
-            className="inline-block px-8 py-4 bg-primary-500 hover:bg-primary-600 text-white rounded-full font-medium text-lg transition-colors duration-300"
+            whileHover={magneticHover}
+            whileTap={pressEffect}
+            className="inline-block px-8 py-4 bg-primary-500 text-white rounded-full font-medium text-lg shadow-lg shadow-primary-500/30"
           >
             See What I've Built
           </motion.a>
         </motion.div>
 
-        <motion.div 
+        <motion.div
           variants={fadeIn}
           className="absolute bottom-10 left-1/2 transform -translate-x-1/2"
         >
-          <div className="flex flex-col items-center animate-bounce">
+          <motion.div
+            className="flex flex-col items-center"
+            animate={{ y: [0, 8, 0] }}
+            transition={{ duration: 2, repeat: Infinity, ease: easings.smooth }}
+          >
             <span className="text-dark-400 text-sm mb-2">Scroll to explore</span>
-            <svg 
-              className="w-6 h-6 text-primary-400" 
-              fill="none" 
-              strokeLinecap="round" 
-              strokeLinejoin="round" 
-              strokeWidth="2" 
-              viewBox="0 0 24 24" 
+            <svg
+              className="w-6 h-6 text-primary-400"
+              fill="none"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              viewBox="0 0 24 24"
               stroke="currentColor"
             >
               <path d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
             </svg>
-          </div>
+          </motion.div>
         </motion.div>
       </motion.div>
     </section>

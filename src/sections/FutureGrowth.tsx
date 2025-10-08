@@ -1,11 +1,11 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { fadeInUp, staggerContainer } from '../utils/animations';
+import { fadeInUp, staggerContainer, easings, durations } from '../utils/animations';
 
 export const FutureGrowth = () => {
   const [ref, inView] = useInView({
     triggerOnce: true,
-    threshold: 0.2
+    threshold: 0.15
   });
 
   const technologies = [
@@ -81,9 +81,14 @@ export const FutureGrowth = () => {
               <motion.div
                 key={index}
                 variants={fadeInUp}
-                className="flex flex-col items-center"
+                whileHover={{
+                  scale: 1.08,
+                  y: -4,
+                  transition: { duration: durations.fast, ease: easings.snappy }
+                }}
+                className="flex flex-col items-center cursor-default"
               >
-                <div className="w-20 h-20 bg-dark-700 rounded-2xl flex items-center justify-center border border-dark-600 hover:border-primary-500/50 transition-all duration-300 hover:scale-110 text-primary-400">
+                <div className="w-20 h-20 bg-dark-700 rounded-2xl flex items-center justify-center border border-dark-600 hover:border-primary-500/50 transition-colors duration-300 text-primary-400">
                   {tech.icon}
                 </div>
                 <span className="mt-3 text-dark-300 text-sm font-medium">{tech.name}</span>

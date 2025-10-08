@@ -1,11 +1,11 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { fadeInUp, staggerContainer, scaleIn } from '../utils/animations';
+import { fadeInUp, staggerContainer, scaleIn, easings, durations } from '../utils/animations';
 
 export const Skills = () => {
   const [ref, inView] = useInView({
     triggerOnce: true,
-    threshold: 0.1
+    threshold: 0.05
   });
 
   const skillCategories = [
@@ -102,24 +102,26 @@ export const Skills = () => {
               key={index}
               variants={scaleIn}
               whileHover={{
-                scale: 1.05,
-                transition: { duration: 0.3, ease: [0.22, 1, 0.36, 1] }
+                scale: 1.03,
+                y: -4,
+                transition: { duration: durations.fast, ease: easings.snappy }
               }}
-              className="group relative bg-dark-800 rounded-2xl p-8 border border-dark-700 hover:border-primary-500/50 transition-all duration-500 hover:shadow-2xl hover:shadow-primary-500/10 cursor-pointer"
+              className="group relative bg-dark-800 rounded-2xl p-8 border border-dark-700 hover:border-primary-500/50 transition-colors duration-300 cursor-pointer"
             >
               <motion.div
                 className={`absolute inset-0 bg-gradient-to-br ${category.gradient} rounded-2xl`}
                 initial={{ opacity: 0 }}
-                whileHover={{ opacity: 0.08 }}
-                transition={{ duration: 0.4 }}
+                whileHover={{ opacity: 0.06 }}
+                transition={{ duration: durations.normal, ease: easings.smooth }}
               />
 
               <div className="relative z-10">
                 <motion.div
                   className="text-primary-400 mb-6"
                   whileHover={{
-                    rotate: [0, -10, 10, -10, 0],
-                    transition: { duration: 0.5 }
+                    scale: 1.1,
+                    rotate: 5,
+                    transition: { duration: durations.fast, ease: easings.snappy }
                   }}
                 >
                   {category.icon}
@@ -129,16 +131,13 @@ export const Skills = () => {
                 </h3>
                 <ul className="space-y-2">
                   {category.skills.map((skill, skillIndex) => (
-                    <motion.li
+                    <li
                       key={skillIndex}
-                      initial={{ opacity: 0.8, x: 0 }}
-                      whileHover={{ opacity: 1, x: 5 }}
-                      transition={{ duration: 0.2 }}
-                      className="flex items-start text-dark-300 text-sm group-hover:text-dark-200"
+                      className="flex items-start text-dark-300 text-sm group-hover:text-dark-200 transition-colors duration-200"
                     >
                       <span className="text-primary-400 mr-2 mt-1">▹</span>
                       <span>{skill}</span>
-                    </motion.li>
+                    </li>
                   ))}
                 </ul>
               </div>

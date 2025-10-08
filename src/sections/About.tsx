@@ -1,11 +1,11 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { fadeInUp, staggerContainer } from '../utils/animations';
+import { fadeInUp, staggerContainer, magneticHover } from '../utils/animations';
 
 export const About = () => {
   const [ref, inView] = useInView({
     triggerOnce: true,
-    threshold: 0.2
+    threshold: 0.15
   });
 
   const stats = [
@@ -59,7 +59,8 @@ export const About = () => {
               <motion.div
                 key={index}
                 variants={fadeInUp}
-                className="bg-dark-700 rounded-2xl p-6 border border-dark-600 hover:border-primary-500/50 transition-all duration-300 hover:scale-105"
+                whileHover={magneticHover}
+                className="bg-dark-700 rounded-2xl p-6 border border-dark-600 hover:border-primary-500/50 transition-colors duration-300 cursor-default"
               >
                 <div className="flex items-baseline space-x-2">
                   <span className="text-4xl md:text-5xl font-display font-bold text-gradient">

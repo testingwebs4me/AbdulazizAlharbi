@@ -1,11 +1,11 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { fadeInUp, staggerContainer } from '../utils/animations';
+import { fadeInUp, staggerContainer, magneticHover } from '../utils/animations';
 
 export const Contact = () => {
   const [ref, inView] = useInView({
     triggerOnce: true,
-    threshold: 0.2
+    threshold: 0.15
   });
 
   const contactInfo = [
@@ -63,7 +63,8 @@ export const Contact = () => {
               key={index}
               href={info.href}
               variants={fadeInUp}
-              className="group bg-dark-800 rounded-2xl p-8 border border-dark-700 hover:border-primary-500/50 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-primary-500/10"
+              whileHover={magneticHover}
+              className="group bg-dark-800 rounded-2xl p-8 border border-dark-700 hover:border-primary-500/50 transition-colors duration-300"
             >
               <div className="flex items-start space-x-4">
                 <div className="flex-shrink-0 w-12 h-12 bg-primary-500/10 rounded-xl flex items-center justify-center text-primary-400 group-hover:bg-primary-500/20 transition-colors">

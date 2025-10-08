@@ -1,11 +1,11 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { fadeInUp, staggerContainer, slideInLeft, slideInRight } from '../utils/animations';
+import { fadeInUp, staggerContainer, slideInLeft, slideInRight, easings, durations } from '../utils/animations';
 
 export const Projects = () => {
   const [ref, inView] = useInView({
     triggerOnce: true,
-    threshold: 0.1
+    threshold: 0.05
   });
 
   const projects = [
@@ -113,8 +113,8 @@ export const Projects = () => {
                         key={i}
                         initial={{ opacity: 0, scale: 0.8 }}
                         whileInView={{ opacity: 1, scale: 1 }}
-                        transition={{ delay: i * 0.1 }}
-                        whileHover={{ scale: 1.1, y: -2 }}
+                        transition={{ delay: i * 0.05, duration: durations.fast, ease: easings.snappy }}
+                        whileHover={{ scale: 1.05, y: -2 }}
                         className="px-3 py-1 bg-dark-700 text-dark-300 rounded-full text-sm border border-dark-600 cursor-default"
                       >
                         {tech}
@@ -126,33 +126,19 @@ export const Projects = () => {
                 <div className={isEven ? '' : 'lg:order-1'}>
                   <motion.div
                     className="relative group"
-                    whileHover={{ scale: 1.02 }}
-                    transition={{ duration: 0.3 }}
+                    whileHover={{ scale: 1.01, y: -4 }}
+                    transition={{ duration: durations.fast, ease: easings.snappy }}
                   >
-                    <motion.div
-                      className="absolute inset-0 bg-primary-500 opacity-20 rounded-2xl blur-xl"
-                      whileHover={{ opacity: 0.35 }}
-                      transition={{ duration: 0.4 }}
-                    />
-                    <div className="relative bg-dark-700 rounded-2xl p-8 border border-dark-600 group-hover:border-primary-500/50 transition-all duration-500">
+                    <div className="absolute inset-0 bg-primary-500/20 rounded-2xl blur-xl" />
+                    <div className="relative bg-dark-700 rounded-2xl p-8 border border-dark-600 group-hover:border-primary-500/50 transition-colors duration-300">
                       <div className="aspect-video bg-dark-800 rounded-lg flex items-center justify-center relative overflow-hidden">
-                        <motion.div
-                          className="absolute inset-0 bg-gradient-to-br from-primary-500/10 to-primary-600/10"
-                          animate={{
-                            opacity: [0.1, 0.2, 0.1],
-                          }}
-                          transition={{
-                            duration: 3,
-                            repeat: Infinity,
-                            ease: "easeInOut"
-                          }}
-                        />
+                        <div className="absolute inset-0 bg-gradient-to-br from-primary-500/10 to-primary-600/10" />
                         <motion.div
                           className="relative z-10 text-primary-400"
                           whileHover={{
-                            scale: 1.2,
-                            rotate: 360,
-                            transition: { duration: 0.6 }
+                            scale: 1.15,
+                            rotate: 8,
+                            transition: { duration: durations.fast, ease: easings.elastic }
                           }}
                         >
                           {index === 0 ? (
