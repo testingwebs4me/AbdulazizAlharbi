@@ -196,39 +196,68 @@ export const Projects = () => {
                           transition={{ duration: durations.fast, ease: easings.snappy }}
                         >
                           <div className="absolute inset-0 bg-gradient-to-br from-primary-500/30 to-primary-600/30 rounded-2xl blur-2xl group-hover:blur-3xl transition-all" />
-                          <div className="relative bg-dark-900/70 backdrop-blur-sm rounded-2xl p-8 border border-primary-500/20">
-                            <div className="aspect-square bg-gradient-to-br from-dark-800 to-dark-900 rounded-xl flex items-center justify-center relative overflow-hidden">
-                              <div className="absolute inset-0 bg-gradient-to-br from-primary-500/20 to-primary-600/20" />
-                              <motion.div
-                                className="absolute inset-0"
-                                style={{
-                                  background: 'radial-gradient(circle at 50% 50%, rgba(56, 102, 126, 0.3) 0%, transparent 70%)',
-                                }}
-                                animate={{
-                                  scale: [1, 1.2, 1],
-                                  opacity: [0.3, 0.5, 0.3],
-                                }}
-                                transition={{ duration: 3, repeat: Infinity }}
-                              />
-                              <motion.div
-                                className="relative z-10 text-primary-400"
-                                whileHover={{
-                                  scale: 1.2,
-                                  rotate: 360,
-                                  transition: { duration: 0.6, ease: easings.elastic }
-                                }}
-                              >
-                                {index === 0 ? (
-                                  <svg className="w-24 h-24 md:w-32 md:h-32" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
-                                  </svg>
-                                ) : (
+                          <div className="relative bg-dark-900/70 backdrop-blur-sm rounded-2xl p-4 border border-primary-500/20">
+                            {index === 0 ? (
+                              <div className="space-y-3">
+                                <motion.div
+                                  className="relative aspect-[9/16] bg-dark-800 rounded-xl overflow-hidden border border-primary-500/30"
+                                  whileHover={{ y: -4 }}
+                                  transition={{ duration: 0.3 }}
+                                >
+                                  <img
+                                    src="https://images.pexels.com/photos/6347888/pexels-photo-6347888.jpeg?auto=compress&cs=tinysrgb&w=400"
+                                    alt="QR Ordering System - Maaden"
+                                    className="w-full h-full object-cover opacity-80"
+                                  />
+                                  <div className="absolute inset-0 bg-gradient-to-t from-dark-900/90 via-dark-900/40 to-transparent" />
+                                  <div className="absolute bottom-4 left-4 right-4">
+                                    <p className="text-xs text-primary-300 font-medium">Maaden Interface</p>
+                                  </div>
+                                </motion.div>
+                                <motion.div
+                                  className="relative aspect-[9/16] bg-dark-800 rounded-xl overflow-hidden border border-primary-500/30"
+                                  whileHover={{ y: -4 }}
+                                  transition={{ duration: 0.3 }}
+                                >
+                                  <img
+                                    src="https://images.pexels.com/photos/4348401/pexels-photo-4348401.jpeg?auto=compress&cs=tinysrgb&w=400"
+                                    alt="QR Ordering System - Remat"
+                                    className="w-full h-full object-cover opacity-80"
+                                  />
+                                  <div className="absolute inset-0 bg-gradient-to-t from-dark-900/90 via-dark-900/40 to-transparent" />
+                                  <div className="absolute bottom-4 left-4 right-4">
+                                    <p className="text-xs text-primary-300 font-medium">Remat Al-Riyadh Interface</p>
+                                  </div>
+                                </motion.div>
+                              </div>
+                            ) : (
+                              <div className="aspect-square bg-gradient-to-br from-dark-800 to-dark-900 rounded-xl flex items-center justify-center relative overflow-hidden">
+                                <div className="absolute inset-0 bg-gradient-to-br from-primary-500/20 to-primary-600/20" />
+                                <motion.div
+                                  className="absolute inset-0"
+                                  style={{
+                                    background: 'radial-gradient(circle at 50% 50%, rgba(56, 102, 126, 0.3) 0%, transparent 70%)',
+                                  }}
+                                  animate={{
+                                    scale: [1, 1.2, 1],
+                                    opacity: [0.3, 0.5, 0.3],
+                                  }}
+                                  transition={{ duration: 3, repeat: Infinity }}
+                                />
+                                <motion.div
+                                  className="relative z-10 text-primary-400"
+                                  whileHover={{
+                                    scale: 1.2,
+                                    rotate: 360,
+                                    transition: { duration: 0.6, ease: easings.elastic }
+                                  }}
+                                >
                                   <svg className="w-24 h-24 md:w-32 md:h-32" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 10V3L4 14h7v7l9-11h-7z" />
                                   </svg>
-                                )}
-                              </motion.div>
-                            </div>
+                                </motion.div>
+                              </div>
+                            )}
                           </div>
                         </motion.div>
                       </div>
