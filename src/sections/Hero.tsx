@@ -37,7 +37,7 @@ export const Hero = () => {
           variants={fadeInUp}
           className="text-5xl md:text-7xl lg:text-8xl font-display font-bold mb-6 leading-tight"
         >
-          Abdulaziz <span className="text-gradient">Bin Sultan</span>
+          Abdulaziz <span className="text-gradient">Alharbi</span>
         </motion.h1>
 
         <motion.div variants={fadeInUp} className="space-y-3">

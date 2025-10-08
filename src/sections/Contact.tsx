@@ -102,7 +102,7 @@ export const Contact = () => {
           className="text-center mt-16 pt-8 border-t border-dark-800"
         >
           <p className="text-dark-500 text-sm">
-            © 2025 Abdulaziz Bin Sultan. Building the future, one project at a time.
+            © 2025 Abdulaziz Alharbi. Building the future, one project at a time.
           </p>
         </motion.div>
       </motion.div>
