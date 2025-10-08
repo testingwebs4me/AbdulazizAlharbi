@@ -7,7 +7,7 @@ import { useRef } from 'react';
 export const Skills = () => {
   const [ref, inView] = useInView({
     triggerOnce: true,
-    threshold: 0.01
+    threshold: 0.05
   });
 
   const sectionRef = useRef<HTMLElement>(null);
