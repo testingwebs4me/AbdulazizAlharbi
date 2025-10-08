@@ -16,11 +16,11 @@ export const Projects = () => {
 
   const images = [
     {
-      src: 'https://raw.githubusercontent.com/testingwebs4me/AbdulazizAlharbi/main/Screenshot%201447-04-16%20at%2022.07.03.png',
+      src: '/maaden-screenshot.png',
       label: 'Maaden Interface'
     },
     {
-      src: 'https://raw.githubusercontent.com/testingwebs4me/AbdulazizAlharbi/main/blur.png',
+      src: '/remat-screenshot.png',
       label: 'Remat Al-Riyadh Interface'
     }
   ];
