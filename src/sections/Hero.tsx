@@ -1,6 +1,6 @@
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { fadeIn, staggerFast, textReveal, pulseGlow } from '../utils/animations';
+import { fadeIn, staggerFast, textReveal } from '../utils/animations';
 import { AnimatedBackground } from '../components/AnimatedBackground';
 import { useRef, useState } from 'react';
 import { useIsMobile } from '../hooks/useIsMobile';
@@ -58,7 +58,6 @@ export const Hero = () => {
         >
           <motion.span
             className="inline-block px-6 py-2 rounded-full border border-primary-500/30 bg-primary-500/10 text-primary-400 text-sm md:text-base font-medium tracking-wider uppercase backdrop-blur-sm"
-            animate={pulseGlow}
           >
             Hello, I'm
           </motion.span>
@@ -123,7 +122,6 @@ export const Hero = () => {
                     scale: 1.2,
                     rotate: [0, -10, 10, 0],
                     color: '#6fb9d4',
-                    textShadow: '0 0 20px rgba(111, 185, 212, 0.8)',
                     transition: { duration: 0.3 }
                   }}
                 >
