@@ -1,7 +1,30 @@
 import { motion } from 'framer-motion';
 import { morphPath, rotateAnimation } from '../utils/animations';
+import { useState, useEffect, useMemo } from 'react';
 
 export const AnimatedBackground = () => {
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+
+  const dots = useMemo(() =>
+    Array.from({ length: 20 }, (_, i) => ({
+      id: i,
+      baseX: Math.random() * 100,
+      baseY: Math.random() * 100,
+      delay: Math.random() * 5,
+      duration: 5 + Math.random() * 3,
+    })),
+    []
+  );
+
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      setMousePosition({ x: e.clientX, y: e.clientY });
+    };
+
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, []);
+
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none">
       <motion.div
@@ -62,26 +85,63 @@ export const AnimatedBackground = () => {
         <rect width="100%" height="100%" fill="url(#grid)" />
       </svg>
 
-      {[...Array(20)].map((_, i) => (
-        <motion.div
-          key={i}
-          className="absolute w-1 h-1 bg-primary-400 rounded-full"
-          style={{
-            left: `${Math.random() * 100}%`,
-            top: `${Math.random() * 100}%`,
-          }}
-          animate={{
-            opacity: [0, 1, 0],
-            scale: [0, 1.5, 0],
-          }}
-          transition={{
-            duration: 5 + Math.random() * 3,
-            repeat: Infinity,
-            delay: Math.random() * 5,
-            ease: 'easeInOut' as const,
-          }}
-        />
-      ))}
+      {dots.map((dot) => {
+        const dotScreenX = (dot.baseX / 100) * window.innerWidth;
+        const dotScreenY = (dot.baseY / 100) * window.innerHeight;
+        const distance = Math.sqrt(
+          Math.pow(mousePosition.x - dotScreenX, 2) +
+          Math.pow(mousePosition.y - dotScreenY, 2)
+        );
+        const repelRadius = 150;
+        const repelStrength = Math.max(0, (repelRadius - distance) / repelRadius);
+        const angle = Math.atan2(
+          dotScreenY - mousePosition.y,
+          dotScreenX - mousePosition.x
+        );
+        const offsetX = Math.cos(angle) * repelStrength * 50;
+        const offsetY = Math.sin(angle) * repelStrength * 50;
+
+        return (
+          <motion.div
+            key={dot.id}
+            className="absolute w-1 h-1 bg-primary-400 rounded-full"
+            style={{
+              left: `${dot.baseX}%`,
+              top: `${dot.baseY}%`,
+            }}
+            animate={{
+              opacity: [0, 1, 0],
+              scale: [0, 1.5, 0],
+              x: offsetX,
+              y: offsetY,
+            }}
+            transition={{
+              opacity: {
+                duration: dot.duration,
+                repeat: Infinity,
+                delay: dot.delay,
+                ease: 'easeInOut' as const,
+              },
+              scale: {
+                duration: dot.duration,
+                repeat: Infinity,
+                delay: dot.delay,
+                ease: 'easeInOut' as const,
+              },
+              x: {
+                type: 'spring',
+                stiffness: 150,
+                damping: 15,
+              },
+              y: {
+                type: 'spring',
+                stiffness: 150,
+                damping: 15,
+              },
+            }}
+          />
+        );
+      })}
 
       <motion.div
         className="absolute top-20 right-20 w-32 h-32 border border-primary-500/20"
