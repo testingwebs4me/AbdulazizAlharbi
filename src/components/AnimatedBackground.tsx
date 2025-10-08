@@ -75,7 +75,7 @@ export const AnimatedBackground = () => {
             scale: [0, 1.5, 0],
           }}
           transition={{
-            duration: 3 + Math.random() * 2,
+            duration: 5 + Math.random() * 3,
             repeat: Infinity,
             delay: Math.random() * 5,
             ease: 'easeInOut' as const,
