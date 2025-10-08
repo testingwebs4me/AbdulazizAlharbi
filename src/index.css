@@ -56,20 +56,6 @@ body {
   color: var(--color-dark-50);
 }
 
-@media (min-width: 1024px) {
-  .snap-section {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-}
-
-@media (max-width: 1023px) {
-  .snap-section {
-    min-height: auto;
-  }
-}
 
 * {
   -webkit-font-smoothing: antialiased;
