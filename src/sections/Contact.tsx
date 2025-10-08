@@ -102,7 +102,7 @@ export const Contact = () => {
           variants={fadeInUp}
           className="text-center mt-16 pt-8 border-t border-dark-800"
         >
-          <p className="text-dark-500 text-sm">
+          <p className="text-white text-sm">
             © 2025 Abdulaziz Alharbi
           </p>
         </motion.div>
