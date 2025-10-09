@@ -2,12 +2,21 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { fadeInUp, staggerContainer, bounceIn } from '../utils/animations';
 import { FlipCard } from '../components/FlipCard';
-import { useRef } from 'react';
+import { useRef, useState, useEffect } from 'react';
 
 export const Skills = () => {
+  const [isTouchDevice, setIsTouchDevice] = useState(false);
+
+  useEffect(() => {
+    const checkTouch = () => {
+      setIsTouchDevice('ontouchstart' in window || navigator.maxTouchPoints > 0);
+    };
+    checkTouch();
+  }, []);
+
   const [ref, inView] = useInView({
     triggerOnce: true,
-    threshold: 0.05
+    threshold: 0.01
   });
 
   const sectionRef = useRef<HTMLElement>(null);
@@ -157,7 +166,7 @@ export const Skills = () => {
                       </h3>
 
                       <p className="text-dark-400 text-sm mb-auto">
-                        Hover to see details
+                        {isTouchDevice ? 'Tap to see details' : 'Hover to see details'}
                       </p>
 
                       <motion.div

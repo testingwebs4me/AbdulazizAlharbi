@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { ReactNode, useState } from 'react';
+import { ReactNode, useState, useEffect } from 'react';
 
 interface FlipCardProps {
   front: ReactNode;
@@ -9,12 +9,27 @@ interface FlipCardProps {
 
 export const FlipCard = ({ front, back, className = '' }: FlipCardProps) => {
   const [isFlipped, setIsFlipped] = useState(false);
+  const [isTouchDevice, setIsTouchDevice] = useState(false);
+
+  useEffect(() => {
+    const checkTouch = () => {
+      setIsTouchDevice('ontouchstart' in window || navigator.maxTouchPoints > 0);
+    };
+    checkTouch();
+  }, []);
+
+  const handleInteraction = () => {
+    if (isTouchDevice) {
+      setIsFlipped(prev => !prev);
+    }
+  };
 
   return (
     <div
       className={`relative h-full cursor-pointer perspective-1000 ${className}`}
-      onMouseEnter={() => setIsFlipped(true)}
-      onMouseLeave={() => setIsFlipped(false)}
+      onMouseEnter={() => !isTouchDevice && setIsFlipped(true)}
+      onMouseLeave={() => !isTouchDevice && setIsFlipped(false)}
+      onClick={handleInteraction}
     >
       <motion.div
         className="relative w-full h-full preserve-3d"
