@@ -16,8 +16,8 @@ export const Skills = () => {
 
   const [ref, inView] = useInView({
     triggerOnce: true,
-    threshold: isTouchDevice ? 0.15 : 0.01,
-    rootMargin: isTouchDevice ? '0px 0px -100px 0px' : '0px'
+    threshold: isTouchDevice ? 0.05 : 0.01,
+    rootMargin: isTouchDevice ? '0px 0px -300px 0px' : '0px'
   });
 
   const sectionRef = useRef<HTMLElement>(null);
