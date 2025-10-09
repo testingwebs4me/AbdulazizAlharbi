@@ -26,8 +26,8 @@ export const Skills = () => {
     offset: ['start end', 'end start']
   });
 
-  const y1 = useTransform(scrollYProgress, [0, 1], [-50, 50]);
-  const y2 = useTransform(scrollYProgress, [0, 1], [50, -50]);
+  const y1 = useTransform(scrollYProgress, [0, 1], isTouchDevice ? [0, 0] : [-50, 50]);
+  const y2 = useTransform(scrollYProgress, [0, 1], isTouchDevice ? [0, 0] : [50, -50]);
 
   const skillCategories = [
     {
@@ -109,6 +109,7 @@ export const Skills = () => {
       />
 
       <motion.div
+        ref={ref}
         variants={staggerContainer}
         initial="hidden"
         animate={inView ? "visible" : "hidden"}
@@ -133,7 +134,6 @@ export const Skills = () => {
             <motion.div
               key={index}
               variants={bounceIn}
-              ref={ref}
               className="h-80"
             >
               <FlipCard
@@ -141,14 +141,16 @@ export const Skills = () => {
                   <div className="relative h-full bg-gradient-to-br from-dark-800/80 to-dark-900/80 backdrop-blur-xl rounded-2xl p-8 border border-dark-600/50 overflow-hidden group">
                     <div className="absolute inset-0 bg-gradient-to-br from-primary-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
-                    <motion.div
-                      className="absolute -top-10 -right-10 w-32 h-32 bg-primary-500/20 rounded-full blur-2xl"
-                      animate={{
-                        scale: [1, 1.2, 1],
-                        opacity: [0.3, 0.5, 0.3],
-                      }}
-                      transition={{ duration: 3, repeat: Infinity }}
-                    />
+                    {!isTouchDevice && (
+                      <motion.div
+                        className="absolute -top-10 -right-10 w-32 h-32 bg-primary-500/20 rounded-full blur-2xl"
+                        animate={{
+                          scale: [1, 1.2, 1],
+                          opacity: [0.3, 0.5, 0.3],
+                        }}
+                        transition={{ duration: 3, repeat: Infinity }}
+                      />
+                    )}
 
                     <div className="relative z-10 h-full flex flex-col">
                       <motion.div
@@ -195,15 +197,15 @@ export const Skills = () => {
                           <motion.li
                             key={skillIndex}
                             className="flex items-start text-dark-200 text-sm"
-                            initial={{ opacity: 0, x: -10 }}
+                            initial={{ opacity: 0, x: isTouchDevice ? 0 : -10 }}
                             animate={{ opacity: 1, x: 0 }}
-                            transition={{ delay: skillIndex * 0.1 }}
+                            transition={{ delay: isTouchDevice ? 0 : skillIndex * 0.1 }}
                           >
                             <motion.span
                               className="text-primary-400 mr-3 mt-0.5 flex-shrink-0"
-                              initial={{ scale: 0 }}
+                              initial={{ scale: isTouchDevice ? 1 : 0 }}
                               animate={{ scale: 1 }}
-                              transition={{ delay: skillIndex * 0.1, type: 'spring' }}
+                              transition={isTouchDevice ? {} : { delay: skillIndex * 0.1, type: 'spring' }}
                             >
                               •
                             </motion.span>

@@ -138,6 +138,16 @@ a,
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
   }
+
+  .cursor-pointer {
+    cursor: default;
+    -webkit-user-select: none;
+    user-select: none;
+  }
+
+  motion-div[class*="h-80"] {
+    touch-action: pan-y;
+  }
 }
 
 @media (hover: none) and (pointer: coarse) {
