@@ -16,7 +16,8 @@ export const Skills = () => {
 
   const [ref, inView] = useInView({
     triggerOnce: true,
-    threshold: 0.01
+    threshold: isTouchDevice ? 0.15 : 0.01,
+    rootMargin: isTouchDevice ? '0px 0px -100px 0px' : '0px'
   });
 
   const sectionRef = useRef<HTMLElement>(null);
@@ -152,11 +153,11 @@ export const Skills = () => {
                     <div className="relative z-10 h-full flex flex-col">
                       <motion.div
                         className="text-primary-400 mb-6"
-                        whileHover={{
+                        whileHover={!isTouchDevice ? {
                           scale: 1.15,
                           rotate: [0, -10, 10, 0],
                           transition: { duration: 0.5 }
-                        }}
+                        } : undefined}
                       >
                         {category.icon}
                       </motion.div>
@@ -169,12 +170,14 @@ export const Skills = () => {
                         {isTouchDevice ? 'Tap to see details' : 'Hover to see details'}
                       </p>
 
-                      <motion.div
-                        className={`absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r ${category.gradient}`}
-                        initial={{ scaleX: 0 }}
-                        whileHover={{ scaleX: 1 }}
-                        transition={{ duration: 0.3 }}
-                      />
+                      {!isTouchDevice && (
+                        <motion.div
+                          className={`absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r ${category.gradient}`}
+                          initial={{ scaleX: 0 }}
+                          whileHover={{ scaleX: 1 }}
+                          transition={{ duration: 0.3 }}
+                        />
+                      )}
                     </div>
                   </div>
                 }

@@ -16,16 +16,26 @@ export const durations = {
   verySlow: 1.2,
 };
 
+const isMobile = typeof window !== 'undefined' && ('ontouchstart' in window || navigator.maxTouchPoints > 0);
+
+export const mobileDurations = {
+  instant: 0.1,
+  fast: 0.2,
+  normal: 0.3,
+  slow: 0.4,
+  verySlow: 0.6,
+};
+
 const defaultTransition: Transition = {
-  duration: durations.normal,
+  duration: isMobile ? mobileDurations.normal : durations.normal,
   ease: easings.confident,
 };
 
 export const fadeInUp: Variants = {
   hidden: {
     opacity: 0,
-    y: 40,
-    filter: 'blur(2px)'
+    y: isMobile ? 20 : 40,
+    filter: isMobile ? 'blur(0px)' : 'blur(2px)'
   },
   visible: {
     opacity: 1,
@@ -33,7 +43,7 @@ export const fadeInUp: Variants = {
     filter: 'blur(0px)',
     transition: {
       ...defaultTransition,
-      duration: durations.slow,
+      duration: isMobile ? mobileDurations.normal : durations.slow,
     }
   }
 };
@@ -41,14 +51,14 @@ export const fadeInUp: Variants = {
 export const fadeIn: Variants = {
   hidden: {
     opacity: 0,
-    filter: 'blur(2px)'
+    filter: isMobile ? 'blur(0px)' : 'blur(2px)'
   },
   visible: {
     opacity: 1,
     filter: 'blur(0px)',
     transition: {
       ...defaultTransition,
-      duration: durations.slow,
+      duration: isMobile ? mobileDurations.normal : durations.slow,
     }
   }
 };
@@ -58,8 +68,8 @@ export const staggerContainer: Variants = {
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.08,
-      delayChildren: 0.1
+      staggerChildren: isMobile ? 0.04 : 0.08,
+      delayChildren: isMobile ? 0.05 : 0.1
     }
   }
 };
@@ -232,15 +242,17 @@ export const shimmer = {
 export const bounceIn: Variants = {
   hidden: {
     opacity: 0,
-    scale: 0.3,
+    scale: isMobile ? 0.85 : 0.3,
   },
   visible: {
     opacity: 1,
     scale: 1,
-    transition: {
-      type: 'spring',
-      stiffness: 260,
-      damping: 20,
-    },
+    transition: isMobile
+      ? { duration: mobileDurations.fast, ease: easings.snappy }
+      : {
+          type: 'spring',
+          stiffness: 260,
+          damping: 20,
+        },
   },
 };
